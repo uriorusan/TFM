@@ -1,6 +1,6 @@
 // contracts/FlashLoan.sol
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.23;
+pragma solidity ^0.8.10;
 
 import {FlashLoanSimpleReceiverBase} from "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol";
 import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
@@ -10,20 +10,20 @@ contract FlashLoan is FlashLoanSimpleReceiverBase {
     address payable owner;
 
     constructor(address _addressProvider)
-        FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider))
+        FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) // 
     {
-        owner = payable(msg.sender);
+        owner = payable(msg.sender); // make the deployer of the contract the owner
     }
 
     /**
         This function is called after your contract has received the flash loaned amount
      */
     function executeOperation(
-        address asset,
-        uint256 amount,
-        uint256 premium,
-        address initiator,
-        bytes calldata params
+        address asset, // address of asset borrowed
+        uint256 amount, // amount borrowed
+        uint256 premium, // fee to be paid
+        address initiator, // initiator of the loan, mostly irrelevant
+        bytes calldata params // other params
     ) external override returns (bool) {
         //
         // This contract now has the funds requested.

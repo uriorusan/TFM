@@ -6,6 +6,10 @@
   },
   "dependencies": {
     "@aave/core-v3": "^1.18.0",
-    "dotenv": "^16.3.1"
+    "@openzeppelin/contracts": "^5.0.1",
+    "@types/node": "^20.11.20",
+    "alchemy-sdk": "^3.1.2",
+    "dotenv": "^16.3.1",
+    "web3": "^4.5.0"
   }
 }

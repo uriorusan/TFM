@@ -1,6 +1,6 @@
 // contracts/FlashLoan.sol
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.23;
+pragma solidity ^0.8.10;
 
 import {FlashLoanSimpleReceiverBase} from "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol";
 import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
@@ -56,7 +56,7 @@ contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
         // Your logic goes here.
         //
 
-        // Arbirtage operation
+        // Arbitrage operation
         dexContract.depositUSDC(1000000000); // 1000 USDC
         dexContract.buyDAI();
         dexContract.depositDAI(dai.balanceOf(address(this)));
