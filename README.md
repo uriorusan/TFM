@@ -1,10 +1,7 @@
 # Oriol Cortes TFM
 
-## Sample shell code
+## Running code
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+npx hardhat run scripts/listenToFlashLoanEvents.ts
+npx hardhat run scripts/deployFlashLoanContract.ts
 ```
