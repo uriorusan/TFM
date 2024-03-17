@@ -1,0 +1,7 @@
+[
+	"@openzeppelin/contracts/build/contracts/ERC20.json",
+	"@openzeppelin/contracts/build/contracts/ERC1155.json",
+	"./artifacts/contracts/FlashLoan.sol/FlashLoan.json",
+    "@uniswap/v3-core/artifacts/contracts/UniswapV3Factory.sol/UniswapV3Factory.json",
+    "@uniswap/v3-core/artifacts/contracts/UniswapV3Pool.sol/UniswapV3Pool.json"
+]

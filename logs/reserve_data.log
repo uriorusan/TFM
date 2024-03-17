@@ -1,0 +1,406 @@
+Pool Address: "0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951"
+Reserve: 0xFF34B3d4Aee8ddCd6F9AFFFB6Fe49bD371b8a357
+Reserve Data: {
+    "0": {
+        "0": "379853576081034459698860574047508183769647092342092",
+        "__length__": 1,
+        "data": "379853576081034459698860574047508183769647092342092"
+    },
+    "1": "1013050708730945353688362566",
+    "2": "1855330482776590883635923",
+    "3": "1018050496011481123297952147",
+    "4": "9324921120097787246195950",
+    "5": "51165615140012223405774494",
+    "6": "1710624636",
+    "7": "0",
+    "8": "0x29598b72eb5CeBd806C5dCD549490FdA35B13cD8",
+    "9": "0xbEF786E742edB13361ff2f005b901A82c23AA491",
+    "10": "0x22675C506A8FC26447aFFfa33640f6af5d4D4cF0",
+    "11": "0xA813CC4d67821fbAcF24659e414A1Cf6c551373c",
+    "12": "4545955295593739957287",
+    "13": "0",
+    "14": "0",
+    "__length__": 15,
+    "configuration": {
+        "0": "379853576081034459698860574047508183769647092342092",
+        "__length__": 1,
+        "data": "379853576081034459698860574047508183769647092342092"
+    },
+    "liquidityIndex": "1013050708730945353688362566",
+    "currentLiquidityRate": "1855330482776590883635923",
+    "variableBorrowIndex": "1018050496011481123297952147",
+    "currentVariableBorrowRate": "9324921120097787246195950",
+    "currentStableBorrowRate": "51165615140012223405774494",
+    "lastUpdateTimestamp": "1710624636",
+    "id": "0",
+    "aTokenAddress": "0x29598b72eb5CeBd806C5dCD549490FdA35B13cD8",
+    "stableDebtTokenAddress": "0xbEF786E742edB13361ff2f005b901A82c23AA491",
+    "variableDebtTokenAddress": "0x22675C506A8FC26447aFFfa33640f6af5d4D4cF0",
+    "interestRateStrategyAddress": "0xA813CC4d67821fbAcF24659e414A1Cf6c551373c",
+    "accruedToTreasury": "4545955295593739957287",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "0"
+}
+
+
+
+Reserve: 0xf8Fb3713D459D7C1018BD0A49D19b4C44290EBE5
+Reserve Data: {
+    "0": {
+        "0": "5708990770823839524233143914701057466751846718296",
+        "__length__": 1,
+        "data": "5708990770823839524233143914701057466751846718296"
+    },
+    "1": "1598487678461175455943021631",
+    "2": "348282676201819859571084038",
+    "3": "2058395423479279956332363766",
+    "4": "756103228918813471010480668",
+    "5": "846103228918813471010480668",
+    "6": "1710616764",
+    "7": "1",
+    "8": "0x3FfAf50D4F4E96eB78f2407c090b72e86eCaed24",
+    "9": "0x8f7440aa789924626ab9f5687AF305da2ffB996b",
+    "10": "0x34a4d932E722b9dFb492B9D8131127690CE2430B",
+    "11": "0xCA30c502d52F905FB3D04eE60cA48F5A1A89f8dB",
+    "12": "57174646130206311363101",
+    "13": "0",
+    "14": "0",
+    "__length__": 15,
+    "configuration": {
+        "0": "5708990770823839524233143914701057466751846718296",
+        "__length__": 1,
+        "data": "5708990770823839524233143914701057466751846718296"
+    },
+    "liquidityIndex": "1598487678461175455943021631",
+    "currentLiquidityRate": "348282676201819859571084038",
+    "variableBorrowIndex": "2058395423479279956332363766",
+    "currentVariableBorrowRate": "756103228918813471010480668",
+    "currentStableBorrowRate": "846103228918813471010480668",
+    "lastUpdateTimestamp": "1710616764",
+    "id": "1",
+    "aTokenAddress": "0x3FfAf50D4F4E96eB78f2407c090b72e86eCaed24",
+    "stableDebtTokenAddress": "0x8f7440aa789924626ab9f5687AF305da2ffB996b",
+    "variableDebtTokenAddress": "0x34a4d932E722b9dFb492B9D8131127690CE2430B",
+    "interestRateStrategyAddress": "0xCA30c502d52F905FB3D04eE60cA48F5A1A89f8dB",
+    "accruedToTreasury": "57174646130206311363101",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "0"
+}
+
+
+
+Reserve: 0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8
+Reserve Data: {
+    "0": {
+        "0": "379853576081034459698860574047508180391947404582720",
+        "__length__": 1,
+        "data": "379853576081034459698860574047508180391947404582720"
+    },
+    "1": "1021530575203382123756370566",
+    "2": "17354821737585063549079839",
+    "3": "1027606534326086564348626959",
+    "4": "23204432545340746794146640",
+    "5": "74992175591159903164367057",
+    "6": "1710627996",
+    "7": "2",
+    "8": "0x16dA4541aD1807f4443d92D26044C1147406EB80",
+    "9": "0x42A218F7bd03c63c4835496506492A383EfcF726",
+    "10": "0x36B5dE936eF1710E1d22EabE5231b28581a92ECc",
+    "11": "0x5CB1008969a2d5FAcE8eF32732e6A306d0D0EF2A",
+    "12": "2168694464",
+    "13": "0",
+    "14": "0",
+    "__length__": 15,
+    "configuration": {
+        "0": "379853576081034459698860574047508180391947404582720",
+        "__length__": 1,
+        "data": "379853576081034459698860574047508180391947404582720"
+    },
+    "liquidityIndex": "1021530575203382123756370566",
+    "currentLiquidityRate": "17354821737585063549079839",
+    "variableBorrowIndex": "1027606534326086564348626959",
+    "currentVariableBorrowRate": "23204432545340746794146640",
+    "currentStableBorrowRate": "74992175591159903164367057",
+    "lastUpdateTimestamp": "1710627996",
+    "id": "2",
+    "aTokenAddress": "0x16dA4541aD1807f4443d92D26044C1147406EB80",
+    "stableDebtTokenAddress": "0x42A218F7bd03c63c4835496506492A383EfcF726",
+    "variableDebtTokenAddress": "0x36B5dE936eF1710E1d22EabE5231b28581a92ECc",
+    "interestRateStrategyAddress": "0x5CB1008969a2d5FAcE8eF32732e6A306d0D0EF2A",
+    "accruedToTreasury": "2168694464",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "0"
+}
+
+
+
+Reserve: 0x29f2D40B0605204364af54EC677bD022dA425d03
+Reserve Data: {
+    "0": {
+        "0": "5708990770823839524233143914701054652002079611736",
+        "__length__": 1,
+        "data": "5708990770823839524233143914701054652002079611736"
+    },
+    "1": "1000156242625214970578642640",
+    "2": "96552165975999641",
+    "3": "1002008315965994221163605968",
+    "4": "4332901138164957717569",
+    "5": "90004332901138164957717569",
+    "6": "1710622956",
+    "7": "3",
+    "8": "0x1804Bf30507dc2EB3bDEbbbdd859991EAeF6EefF",
+    "9": "0xc7AEA6Cf353b4FA27aBf1b4A8D536A4e87383EB5",
+    "10": "0xEB016dFd303F19fbDdFb6300eB4AeB2DA7Ceac37",
+    "11": "0xCA30c502d52F905FB3D04eE60cA48F5A1A89f8dB",
+    "12": "5853938",
+    "13": "0",
+    "14": "0",
+    "__length__": 15,
+    "configuration": {
+        "0": "5708990770823839524233143914701054652002079611736",
+        "__length__": 1,
+        "data": "5708990770823839524233143914701054652002079611736"
+    },
+    "liquidityIndex": "1000156242625214970578642640",
+    "currentLiquidityRate": "96552165975999641",
+    "variableBorrowIndex": "1002008315965994221163605968",
+    "currentVariableBorrowRate": "4332901138164957717569",
+    "currentStableBorrowRate": "90004332901138164957717569",
+    "lastUpdateTimestamp": "1710622956",
+    "id": "3",
+    "aTokenAddress": "0x1804Bf30507dc2EB3bDEbbbdd859991EAeF6EefF",
+    "stableDebtTokenAddress": "0xc7AEA6Cf353b4FA27aBf1b4A8D536A4e87383EB5",
+    "variableDebtTokenAddress": "0xEB016dFd303F19fbDdFb6300eB4AeB2DA7Ceac37",
+    "interestRateStrategyAddress": "0xCA30c502d52F905FB3D04eE60cA48F5A1A89f8dB",
+    "accruedToTreasury": "5853938",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "0"
+}
+
+
+
+Reserve: 0xC558DBdd856501FCd9aaF1E62eae57A9F0629a3c
+Reserve Data: {
+    "0": {
+        "0": "5708990770823839524233143896254025160518708895552",
+        "__length__": 1,
+        "data": "5708990770823839524233143896254025160518708895552"
+    },
+    "1": "1000019031082879566036613962",
+    "2": "0",
+    "3": "1000000000000000000000000000",
+    "4": "0",
+    "5": "90000000000000000000000000",
+    "6": "1710624684",
+    "7": "4",
+    "8": "0x5b071b590a59395fE4025A0Ccc1FcC931AAc1830",
+    "9": "0xEb45D5A0efF06fFb88f6A70811c08375A8de84A3",
+    "10": "0x22a35DB253f4F6D0029025D6312A3BdAb20C2c6A",
+    "11": "0xCA30c502d52F905FB3D04eE60cA48F5A1A89f8dB",
+    "12": "2939952227099",
+    "13": "0",
+    "14": "0",
+    "__length__": 15,
+    "configuration": {
+        "0": "5708990770823839524233143896254025160518708895552",
+        "__length__": 1,
+        "data": "5708990770823839524233143896254025160518708895552"
+    },
+    "liquidityIndex": "1000019031082879566036613962",
+    "currentLiquidityRate": "0",
+    "variableBorrowIndex": "1000000000000000000000000000",
+    "currentVariableBorrowRate": "0",
+    "currentStableBorrowRate": "90000000000000000000000000",
+    "lastUpdateTimestamp": "1710624684",
+    "id": "4",
+    "aTokenAddress": "0x5b071b590a59395fE4025A0Ccc1FcC931AAc1830",
+    "stableDebtTokenAddress": "0xEb45D5A0efF06fFb88f6A70811c08375A8de84A3",
+    "variableDebtTokenAddress": "0x22a35DB253f4F6D0029025D6312A3BdAb20C2c6A",
+    "interestRateStrategyAddress": "0xCA30c502d52F905FB3D04eE60cA48F5A1A89f8dB",
+    "accruedToTreasury": "2939952227099",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "0"
+}
+
+
+
+Reserve: 0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0
+Reserve Data: {
+    "0": {
+        "0": "3291009114642412084310318218690782044425170591841207234877609995371814220",
+        "__length__": 1,
+        "data": "3291009114642412084310318218690782044425170591841207234877609995371814220"
+    },
+    "1": "1009153422507633446188466138",
+    "2": "339599099410342794415803",
+    "3": "1012479445590320380640807775",
+    "4": "3617925081836202105539978",
+    "5": "50452240635229525263192497",
+    "6": "1710623004",
+    "7": "5",
+    "8": "0xAF0F6e8b0Dc5c913bbF4d14c22B4E78Dd14310B6",
+    "9": "0xEAF54fA3b1C7243033C2893c6B807f9cEaBCf0AF",
+    "10": "0x9844386d29EEd970B9F6a2B9a676083b0478210e",
+    "11": "0x5CB1008969a2d5FAcE8eF32732e6A306d0D0EF2A",
+    "12": "4021277255",
+    "13": "0",
+    "14": "11192672",
+    "__length__": 15,
+    "configuration": {
+        "0": "3291009114642412084310318218690782044425170591841207234877609995371814220",
+        "__length__": 1,
+        "data": "3291009114642412084310318218690782044425170591841207234877609995371814220"
+    },
+    "liquidityIndex": "1009153422507633446188466138",
+    "currentLiquidityRate": "339599099410342794415803",
+    "variableBorrowIndex": "1012479445590320380640807775",
+    "currentVariableBorrowRate": "3617925081836202105539978",
+    "currentStableBorrowRate": "50452240635229525263192497",
+    "lastUpdateTimestamp": "1710623004",
+    "id": "5",
+    "aTokenAddress": "0xAF0F6e8b0Dc5c913bbF4d14c22B4E78Dd14310B6",
+    "stableDebtTokenAddress": "0xEAF54fA3b1C7243033C2893c6B807f9cEaBCf0AF",
+    "variableDebtTokenAddress": "0x9844386d29EEd970B9F6a2B9a676083b0478210e",
+    "interestRateStrategyAddress": "0x5CB1008969a2d5FAcE8eF32732e6A306d0D0EF2A",
+    "accruedToTreasury": "4021277255",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "11192672"
+}
+
+
+
+Reserve: 0x88541670E55cC00bEEFD87eB59EDd1b7C511AC9a
+Reserve Data: {
+    "0": {
+        "0": "5708990770823839524233143877807281088956526236552",
+        "__length__": 1,
+        "data": "5708990770823839524233143877807281088956526236552"
+    },
+    "1": "1000000204132312496170196768",
+    "2": "0",
+    "3": "1000000000000000000000000000",
+    "4": "0",
+    "5": "90000000000000000000000000",
+    "6": "1710621312",
+    "7": "6",
+    "8": "0x6b8558764d3b7572136F17174Cb9aB1DDc7E1259",
+    "9": "0x4F15CaD6ebAE920a773bF00C6E941cccCB704915",
+    "10": "0xf12fdFc4c631F6D361b48723c2F2800b84B519e6",
+    "11": "0xCA30c502d52F905FB3D04eE60cA48F5A1A89f8dB",
+    "12": "0",
+    "13": "0",
+    "14": "0",
+    "__length__": 15,
+    "configuration": {
+        "0": "5708990770823839524233143877807281088956526236552",
+        "__length__": 1,
+        "data": "5708990770823839524233143877807281088956526236552"
+    },
+    "liquidityIndex": "1000000204132312496170196768",
+    "currentLiquidityRate": "0",
+    "variableBorrowIndex": "1000000000000000000000000000",
+    "currentVariableBorrowRate": "0",
+    "currentStableBorrowRate": "90000000000000000000000000",
+    "lastUpdateTimestamp": "1710621312",
+    "id": "6",
+    "aTokenAddress": "0x6b8558764d3b7572136F17174Cb9aB1DDc7E1259",
+    "stableDebtTokenAddress": "0x4F15CaD6ebAE920a773bF00C6E941cccCB704915",
+    "variableDebtTokenAddress": "0xf12fdFc4c631F6D361b48723c2F2800b84B519e6",
+    "interestRateStrategyAddress": "0xCA30c502d52F905FB3D04eE60cA48F5A1A89f8dB",
+    "accruedToTreasury": "0",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "0"
+}
+
+
+
+Reserve: 0x6d906e526a4e2Ca02097BA9d0caA3c382F52278E
+Reserve Data: {
+    "0": {
+        "0": "3291009114642412084310318218524628544952056107728231350035599087927564644",
+        "__length__": 1,
+        "data": "3291009114642412084310318218524628544952056107728231350035599087927564644"
+    },
+    "1": "1057814681580649028370906463",
+    "2": "21921721716920100199256654",
+    "3": "1069835702963928440631847207",
+    "4": "32692287042606535469847632",
+    "5": "54086535880325816933730954",
+    "6": "1710569736",
+    "7": "7",
+    "8": "0xB20691021F9AcED8631eDaa3c0Cd2949EB45662D",
+    "9": "0x08878209484D8178DD1FFA50AB1689F21aDBB856",
+    "10": "0x94482C7A7477196259D8a0f74fB853277Fa5a75b",
+    "11": "0x5CB1008969a2d5FAcE8eF32732e6A306d0D0EF2A",
+    "12": "2143653",
+    "13": "0",
+    "14": "100000",
+    "__length__": 15,
+    "configuration": {
+        "0": "3291009114642412084310318218524628544952056107728231350035599087927564644",
+        "__length__": 1,
+        "data": "3291009114642412084310318218524628544952056107728231350035599087927564644"
+    },
+    "liquidityIndex": "1057814681580649028370906463",
+    "currentLiquidityRate": "21921721716920100199256654",
+    "variableBorrowIndex": "1069835702963928440631847207",
+    "currentVariableBorrowRate": "32692287042606535469847632",
+    "currentStableBorrowRate": "54086535880325816933730954",
+    "lastUpdateTimestamp": "1710569736",
+    "id": "7",
+    "aTokenAddress": "0xB20691021F9AcED8631eDaa3c0Cd2949EB45662D",
+    "stableDebtTokenAddress": "0x08878209484D8178DD1FFA50AB1689F21aDBB856",
+    "variableDebtTokenAddress": "0x94482C7A7477196259D8a0f74fB853277Fa5a75b",
+    "interestRateStrategyAddress": "0x5CB1008969a2d5FAcE8eF32732e6A306d0D0EF2A",
+    "accruedToTreasury": "2143653",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "100000"
+}
+
+
+
+Reserve: 0xc4bF5CbDaBE595361438F8c6a187bDc330539c60
+Reserve Data: {
+    "0": {
+        "0": "365354519770431488",
+        "__length__": 1,
+        "data": "365354519770431488"
+    },
+    "1": "1000000000000000000000000000",
+    "2": "0",
+    "3": "1003654133488211595650261158",
+    "4": "20000000000000000000000000",
+    "5": "0",
+    "6": "1710616668",
+    "7": "8",
+    "8": "0xd190eF37dB51Bb955A680fF1A85763CC72d083D4",
+    "9": "0xdCA691FB9609aB814E59c62d70783da1c056A9b6",
+    "10": "0x67ae46EF043F7A4508BD1d6B94DB6c33F0915844",
+    "11": "0x521247B4d0a51E71DE580dA2cBF99EB40a44b3Bf",
+    "12": "0",
+    "13": "0",
+    "14": "0",
+    "__length__": 15,
+    "configuration": {
+        "0": "365354519770431488",
+        "__length__": 1,
+        "data": "365354519770431488"
+    },
+    "liquidityIndex": "1000000000000000000000000000",
+    "currentLiquidityRate": "0",
+    "variableBorrowIndex": "1003654133488211595650261158",
+    "currentVariableBorrowRate": "20000000000000000000000000",
+    "currentStableBorrowRate": "0",
+    "lastUpdateTimestamp": "1710616668",
+    "id": "8",
+    "aTokenAddress": "0xd190eF37dB51Bb955A680fF1A85763CC72d083D4",
+    "stableDebtTokenAddress": "0xdCA691FB9609aB814E59c62d70783da1c056A9b6",
+    "variableDebtTokenAddress": "0x67ae46EF043F7A4508BD1d6B94DB6c33F0915844",
+    "interestRateStrategyAddress": "0x521247B4d0a51E71DE580dA2cBF99EB40a44b3Bf",
+    "accruedToTreasury": "0",
+    "unbacked": "0",
+    "isolationModeTotalDebt": "0"
+}
+
+
+
