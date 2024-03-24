@@ -299,6 +299,46 @@
         "FlashLoanArbitrage",
         "IDex"
       ]
+    },
+    "/home/san/TFM/contracts/DexContract.sol": {
+      "lastModificationDate": 1711305649180,
+      "contentHash": "6990ce86bc336aeb72cb2556aecb774d",
+      "sourceName": "contracts/DexContract.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
+        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
+        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "FlashLoanArbitrage",
+        "IDex"
+      ]
     }
   }
 }
