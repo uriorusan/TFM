@@ -43,11 +43,11 @@ async function main() {
     for (let transaction of allTransactions) {
         count++;
         if (most_borrowed_assets.includes(transaction.returnValues.asset)) {
+            const transactionReceipt = await web3.eth.getTransactionReceipt(transaction.transactionHash);
             const asset = transaction.returnValues.asset;
             const wallet = transaction.returnValues.initiator;
             const blockNumber = transaction.blockNumber;
             const assetName = most_borrowed_assets_names[asset] || "Unknown Asset";
-            const premium = transaction.returnValues.premium;
 
             const erc20Contract = new web3.eth.Contract(ERC20.abi, asset);
 
@@ -61,6 +61,7 @@ async function main() {
 
                 if (profit > 0) {
                     console.log(`Profit for ${wallet} in transaction ${transaction.transactionHash}: ${profit} ${assetName}`);
+                    console.log(`Transaction Receipt: ${JSON.stringify(transactionReceipt, replacer, 4)}`)
                 }
 
 
