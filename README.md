@@ -3,7 +3,7 @@
 ## Running code
 ```shell
 # before building
-node -r ts-node/register scripts/generateAbisFromArtifacts.ts abis/
+npm run test
 # then
 npx hardhat run scripts/listenToFlashLoanEvents.ts
 npx hardhat run --network sepolia scripts/deployFlashLoanContract.ts

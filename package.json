@@ -4,16 +4,31 @@
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "hardhat": "^2.19.4"
   },
+  "scripts": {
+    "setup": "npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/UC_bPY7j48f7J4AxuX21YFdUDtB62meR",
+    "build": "hardhat typechain",
+    "deployFlashLoanContract": "npx hardhat run --network localhost scripts/deployFlashLoanContract.ts",
+    "executeFlashLoanTransaction": "npx hardhat run --network localhost scripts/executeFlashLoanTransaction.ts"
+  },
   "dependencies": {
     "@aave/core-v3": "^1.18.0",
+    "@aave/periphery-v3": "^2.5.2",
+    "@aave/protocol-v2": "^1.0.1",
+    "@bgd-labs/aave-address-book": "^2.26.1",
     "@mycrypto/eth-scan": "^3.5.3",
     "@openzeppelin/contracts": "^5.0.2",
     "@types/node": "^20.11.20",
+    "@uniswap/sdk": "^3.0.3",
+    "@uniswap/universal-router": "^1.6.0",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "@uniswap/v3-core": "^1.0.1",
     "@uniswap/v3-periphery": "^1.4.4",
     "@uniswap/v3-sdk": "^3.11.0",
-    "alchemy-sdk": "^3.1.2",
+    "alchemy-sdk": "^3.2.0",
     "dotenv": "^16.3.1",
+    "ethers": "^6.11.1",
+    "hardhat-ethers": "^1.0.1",
     "web3": "^4.5.0"
   }
 }

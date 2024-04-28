@@ -16,3 +16,4 @@ node_modules/
 
 # Vs Code files
 .vscode
+sol*

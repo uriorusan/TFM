@@ -1,6 +1,6 @@
 // contracts/FlashLoan.sol
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.10;
+pragma solidity ^0.8.20;
 
 import {ISwapRouter} from '@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol';
 import {TransferHelper} from '@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol';
@@ -29,10 +29,12 @@ contract SwapContract {
         {
         ISwapRouter swapRouter = ISwapRouter(_swapRouter);
 
+        // The msg.sender must approve of this token to be spent by the router.
+
         // Transfer the specified amount of token to this contract.
         TransferHelper.safeTransferFrom(_tokenIn, msg.sender, address(this), _amount);
 
-        // Approve the router to spend DAI.
+        // Approve the router to spend token.
         TransferHelper.safeApprove(_tokenIn, address(swapRouter), _amount);
 
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter.ExactInputSingleParams({
