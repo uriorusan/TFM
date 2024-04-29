@@ -2,11 +2,15 @@
   "name": "hardhat-project",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "hardhat": "^2.19.4"
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "hardhat": "^2.19.4",
+    "typechain": "^8.3.2"
   },
   "scripts": {
-    "setup": "npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/UC_bPY7j48f7J4AxuX21YFdUDtB62meR",
+    "setup": "dotenv -f .env run -- bash -c 'npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/$ALCHEMY_API_KEY'",
     "build": "hardhat typechain",
+    "terminal": "npx hardhat console --network localhost",
     "deployFlashLoanContract": "npx hardhat run --network localhost scripts/deployFlashLoanContract.ts",
     "executeFlashLoanTransaction": "npx hardhat run --network localhost scripts/executeFlashLoanTransaction.ts"
   },
@@ -16,6 +20,8 @@
     "@aave/protocol-v2": "^1.0.1",
     "@bgd-labs/aave-address-book": "^2.26.1",
     "@mycrypto/eth-scan": "^3.5.3",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.6",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
     "@openzeppelin/contracts": "^5.0.2",
     "@types/node": "^20.11.20",
     "@uniswap/sdk": "^3.0.3",

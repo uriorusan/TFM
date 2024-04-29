@@ -1,5 +1,5 @@
 
-import { FlashLoanV3, IERC20Metadata, IPool, IPoolAddressesProvider, WrappedTokenGatewayV3, IAToken, ISwapRouter } from '../typechain-types';
+import { FlashLoanV3, IERC20Metadata, IPool, IPoolAddressesProvider, WrappedTokenGatewayV3, IAToken } from '../typechain-types';
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
 
@@ -13,8 +13,8 @@ async function main() {
     const signer = await provider.getSigner();
 
     // Get the FlashLoan contract instance
-    const flashLoanContractAddress = "0xCA87833e830652C2ab07E1e03eBa4F2c246D3b58" // Local deployment
-    const flashLoanContract: FlashLoanV3 = await ethers.getContractAt('FlashLoanV3', flashLoanContractAddress, signer)
+    const flashLoanContractAddress = "0x8CeA85eC7f3D314c4d144e34F2206C8Ac0bbadA1"; // Local deployment
+    const flashLoanContract: FlashLoanV3 = await ethers.getContractAt('FlashLoanV3', flashLoanContractAddress, signer);
 
     // Get the Uniswap router instance
     const wEthGatewayAddress = AaveV3Ethereum.WETH_GATEWAY;
@@ -28,10 +28,6 @@ async function main() {
     // Get wEth token instance
     const aWEthAddress = AaveV3Ethereum.ASSETS.WETH.A_TOKEN;
     const aWEth: IAToken = await ethers.getContractAt('IAToken', aWEthAddress, signer);
-
-    // Get uniswap Router instance
-    const swapRouterAddress = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
-    const swapRouter: ISwapRouter = await ethers.getContractAt('ISwapRouter', swapRouterAddress, signer);
 
     // Get WEth token instance
     const WEthAddress = AaveV3Ethereum.ASSETS.WETH.UNDERLYING;
