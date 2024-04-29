@@ -2,9 +2,10 @@
 
 ## Running code
 ```shell
-# before building
-npm run test
+# build the ABIs
+npm run build
+# set up the ethereum fork
+npm run setup
 # then
-npx hardhat run scripts/listenToFlashLoanEvents.ts
-npx hardhat run --network sepolia scripts/deployFlashLoanContract.ts
+npm run main
 ```

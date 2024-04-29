@@ -11,8 +11,7 @@
     "setup": "dotenv -f .env run -- bash -c 'npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/$ALCHEMY_API_KEY'",
     "build": "hardhat typechain",
     "terminal": "npx hardhat console --network localhost",
-    "deployFlashLoanContract": "npx hardhat run --network localhost scripts/deployFlashLoanContract.ts",
-    "executeFlashLoanTransaction": "npx hardhat run --network localhost scripts/executeFlashLoanTransaction.ts"
+    "main": "npx hardhat run --network localhost scripts/main.ts"
   },
   "dependencies": {
     "@aave/core-v3": "^1.18.0",

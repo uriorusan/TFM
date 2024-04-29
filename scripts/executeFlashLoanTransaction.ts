@@ -9,21 +9,15 @@ const DOMAIN = MAINNET ? process.env.ALCHEMY_MAINNET_ENDPOINT_WSS : process.env.
 const provider = new ethers.JsonRpcProvider(DOMAIN);
 
 // Main function to execute the script
-async function main() {
+export async function executeSimpleFlashLoan(flashLoanContractAddress: string) {
     const signer = await provider.getSigner();
 
     // Get the FlashLoan contract instance
-    const flashLoanContractAddress = "0x8CeA85eC7f3D314c4d144e34F2206C8Ac0bbadA1"; // Local deployment
     const flashLoanContract: FlashLoanV3 = await ethers.getContractAt('FlashLoanV3', flashLoanContractAddress, signer);
 
     // Get the Uniswap router instance
     const wEthGatewayAddress = AaveV3Ethereum.WETH_GATEWAY;
     const wEthGateway: WrappedTokenGatewayV3 = await ethers.getContractAt('WrappedTokenGatewayV3', wEthGatewayAddress, signer);
-    
-    // Get the Link token instance
-    const linkTokenAddress = AaveV3Ethereum.ASSETS.LINK.UNDERLYING;
-    const linkToken: IERC20Metadata = await ethers.getContractAt('IERC20Metadata', linkTokenAddress, signer);
-    const linkDecimals = ethers.getBigInt(10) ** ethers.getBigInt(await linkToken.decimals());
 
     // Get wEth token instance
     const aWEthAddress = AaveV3Ethereum.ASSETS.WETH.A_TOKEN;
@@ -46,19 +40,12 @@ async function main() {
     // Swap ETH for aWEth
     let tx = await wEthGateway.depositETH(poolAddress, signer.address, 0, { value: amountEthToSwap });
     await tx.wait();
-    console.log(`Swapped 1 ETH for aWEth`);
-
-    // Get Balances of the flashLoanContract
-    let aWEthbalanceBefore = ethers.getBigInt(await aWEth.balanceOf(signer.address)) / WEthDecimals
+    console.log(`Deposited 1 ETH into the wrapped ETH gateway AAVE Pool`);
 
     // Withdraw WETH with the aWETH
-    console.log(`Withdrawing WETH...`);
+    console.log(`Withdrawing WETH from the wrapped ETH gateway AAVE Pool`);
     tx = await pool.withdraw(WEthAddress, amountEthToSwap, flashLoanContractAddress);
     await tx.wait();
-
-    let aWethBalanceAfter = ethers.getBigInt(await aWEth.balanceOf(signer.address)) / WEthDecimals
-
-    console.log(`aWETH Amount Before: ${aWEthbalanceBefore}, aWETH Amount After: ${aWethBalanceAfter}`);
 
     let balanceBeforeWETH = Number(await WEth.balanceOf(flashLoanContractAddress)) / Number(WEthDecimals)
 
@@ -74,8 +61,6 @@ async function main() {
 
     console.log(`WETH Amount Before: ${balanceBeforeWETH}, WETH Amount After FlashLoan: ${balanceAfterWETH}`);
 }
-
-main().catch(console.error).finally(() => process.exit(0));
 
 const replacer = (key: any, value: any) => 
     typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String
