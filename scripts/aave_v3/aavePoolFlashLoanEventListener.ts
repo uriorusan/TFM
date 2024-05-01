@@ -1,9 +1,7 @@
 
 import { Web3 } from 'web3';
-import fs from 'fs';
-import path from 'path';
-import Pool from '../../abis/Pool';
-import PoolAddressesProvider from '../../abis/PoolAddressesProvider';
+import Pool from '../../artifacts/@aave/core-v3/contracts/interfaces/IPool.sol/IPool.json';
+import PoolAddressesProvider from '../../artifacts/@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol/IPoolAddressesProvider.json';
 
 const MAINNET = true;
 const DOMAIN = MAINNET ? process.env.ALCHEMY_MAINNET_ENDPOINT_WSS : process.env.ALCHEMY_SEPOLIA_ENDPOINT_WSS;
