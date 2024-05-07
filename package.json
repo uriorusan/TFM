@@ -8,10 +8,10 @@
     "typechain": "^8.3.2"
   },
   "scripts": {
-    "setup": "dotenv -f .env run -- bash -c 'npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/$ALCHEMY_API_KEY'",
+    "blockchain": "dotenv -f .env run -- bash -c 'npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/$ALCHEMY_API_KEY'",
     "build": "hardhat typechain",
     "terminal": "npx hardhat console --network localhost",
-    "main": "npx hardhat run --network localhost scripts/main.ts"
+    "main": "npx hardhat run --network localhost src/main.ts"
   },
   "dependencies": {
     "@aave/core-v3": "^1.18.0",

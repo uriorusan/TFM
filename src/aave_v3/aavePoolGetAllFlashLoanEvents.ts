@@ -18,9 +18,10 @@ export default async function main() {
 
     const poolContract = await ethers.getContractAt('IPool', poolContractAddress);
 
-    // Subscribe to the FlashLoan event
+    // Get a filter for FlashLoan event
     let flashLoanEventsFilter = await poolContract.filters.FlashLoan(undefined, undefined, AaveV3Ethereum.ASSETS.WETH.UNDERLYING); 
-
+    
+    // Use the filter to query all events
     let events = await poolContract.queryFilter(flashLoanEventsFilter, 0, 'latest');
 
     let fileName = 'flash_loans_mainnet_ethers.log';
