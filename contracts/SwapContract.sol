@@ -8,8 +8,17 @@ import {TransferHelper} from '@uniswap/v3-periphery/contracts/libraries/Transfer
 contract SwapContract {
     address payable owner;
 
+    // Events
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event SwapInitiated(address indexed tokenIn, address indexed tokenOut, uint256 amountIn);
+    event SwapFinished(address indexed tokenIn, address indexed tokenOut, uint256 amountIn, uint256 amountOut);
+
+    event ApprovalSet(address indexed token, address indexed spender, uint256 amount);
+    event TransferPerformed(address indexed token, address indexed from, address indexed to, uint256 amount);
+
     constructor() {
         owner = payable(msg.sender); // make the deployer of the contract the owner
+        emit OwnershipTransferred(address(0), msg.sender);
     }
 
     modifier onlyOwner() {
@@ -23,34 +32,31 @@ contract SwapContract {
         address _swapRouter,
         uint256 _amount,
         uint24 _poolFee
-        )
-        external onlyOwner
-        returns (uint256 amountOut)
-        {
+    )
+    external onlyOwner returns (uint256 amountOut)
+    {
         ISwapRouter swapRouter = ISwapRouter(_swapRouter);
 
-        // The msg.sender must approve of this token to be spent by the router.
-
-        // Transfer the specified amount of token to this contract.
         TransferHelper.safeTransferFrom(_tokenIn, msg.sender, address(this), _amount);
+        emit TransferPerformed(_tokenIn, msg.sender, address(this), _amount);
 
-        // Approve the router to spend token.
         TransferHelper.safeApprove(_tokenIn, address(swapRouter), _amount);
+        emit ApprovalSet(_tokenIn, address(swapRouter), _amount);
 
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter.ExactInputSingleParams({
-                tokenIn: _tokenIn,
-                tokenOut: _tokenOut,
-                fee: _poolFee,
-                recipient: msg.sender,
-                deadline: block.number,
-                amountIn: _amount,
-                amountOutMinimum: 0,
-                sqrtPriceLimitX96: 0
-            });
+            tokenIn: _tokenIn,
+            tokenOut: _tokenOut,
+            fee: _poolFee,
+            recipient: msg.sender,
+            deadline: block.number,
+            amountIn: _amount,
+            amountOutMinimum: 0,
+            sqrtPriceLimitX96: 0
+        });
+        emit SwapInitiated(_tokenIn, _tokenOut, _amount);
 
-        // Executes the swap returning the amountIn needed to spend to receive the desired amountOut.
         amountOut = swapRouter.exactInputSingle(params);
-
+        emit SwapFinished(_tokenIn, _tokenOut, _amount, amountOut);
         return amountOut;
     }
 }

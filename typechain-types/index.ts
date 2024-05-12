@@ -72,5 +72,7 @@ export type { FlashLoanV2 } from "./contracts/FlashLoanV2";
 export { FlashLoanV2__factory } from "./factories/contracts/FlashLoanV2__factory";
 export type { FlashLoanV3 } from "./contracts/FlashLoanV3";
 export { FlashLoanV3__factory } from "./factories/contracts/FlashLoanV3__factory";
+export type { SingleSwap } from "./contracts/SimpleSwap.sol/SingleSwap";
+export { SingleSwap__factory } from "./factories/contracts/SimpleSwap.sol/SingleSwap__factory";
 export type { SwapContract } from "./contracts/SwapContract";
 export { SwapContract__factory } from "./factories/contracts/SwapContract__factory";

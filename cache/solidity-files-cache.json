@@ -351,8 +351,8 @@
       ]
     },
     "/home/san/TFM/contracts/SwapContract.sol": {
-      "lastModificationDate": 1711757414309,
-      "contentHash": "39814c6eed99278fbdd16c33a442a5f9",
+      "lastModificationDate": 1715549707716,
+      "contentHash": "e4fde7eba927aee31eb80fe00a18c64c",
       "sourceName": "contracts/SwapContract.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -1639,6 +1639,44 @@
       ],
       "artifacts": [
         "IVariableDebtToken"
+      ]
+    },
+    "/home/san/TFM/contracts/SimpleSwap.sol": {
+      "lastModificationDate": 1715453640685,
+      "contentHash": "728df92aab0482780190a771bb7711e1",
+      "sourceName": "contracts/SimpleSwap.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol"
+      ],
+      "versionPragmas": [
+        "=0.7.6"
+      ],
+      "artifacts": [
+        "IERC20",
+        "SingleSwap"
       ]
     }
   }

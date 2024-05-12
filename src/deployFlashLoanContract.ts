@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
 
-export async function deployFlashLoan() {
+export async function deployFlashLoanContract() {
   try {
     const FlashLoan = await ethers.getContractFactory("FlashLoanV3");
     const flashLoan = await FlashLoan.deploy(AaveV3Ethereum.POOL_ADDRESSES_PROVIDER);

@@ -25,5 +25,7 @@ And set up the hardhat environment with the localhost network and forked the eth
 This was tested and developed using a simple FlashLoan contract that only requests the Loan and immidiately returns it, copied from here:
 https://github.com/jspruance/aave-flash-loan-tutorial
 
+## 6th of May - 12th of May 2024
 
+Most of the progress has been on trying to 
 

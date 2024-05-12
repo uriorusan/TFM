@@ -16,6 +16,9 @@ const solidityConfig: SolidityUserConfig = {
     },
     {
       version: "0.6.12",
+    },
+    {
+      version: "0.7.6",
     }
   ]
 };

@@ -146,6 +146,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.FlashLoanV3__factory>;
     getContractFactory(
+      name: "IERC20",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC20__factory>;
+    getContractFactory(
+      name: "SingleSwap",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.SingleSwap__factory>;
+    getContractFactory(
       name: "SwapContract",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.SwapContract__factory>;
@@ -316,6 +324,16 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.FlashLoanV3>;
     getContractAt(
+      name: "IERC20",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20>;
+    getContractAt(
+      name: "SingleSwap",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.SingleSwap>;
+    getContractAt(
       name: "SwapContract",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -454,6 +472,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.FlashLoanV3>;
     deployContract(
+      name: "IERC20",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC20>;
+    deployContract(
+      name: "SingleSwap",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SingleSwap>;
+    deployContract(
       name: "SwapContract",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.SwapContract>;
@@ -623,6 +649,16 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.FlashLoanV3>;
+    deployContract(
+      name: "IERC20",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC20>;
+    deployContract(
+      name: "SingleSwap",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SingleSwap>;
     deployContract(
       name: "SwapContract",
       args: any[],
