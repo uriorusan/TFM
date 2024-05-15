@@ -11,27 +11,18 @@ export async function listenToSwapContractEvents(swapContractAddress: string) {
     console.log(`Listening to SwapContract events at address: ${swapContractAddress}`);
 
     // Listen for the SwapInitiated event
-    contract.on(contract.getEvent("SwapInitiated"), (tokenIn, tokenOut, amountIn, amountOut, event) => {
-        console.log(`Swap from ${tokenIn} to ${tokenOut} initiated, ${amountIn} in, ${amountOut} out`);
+    contract.on(contract.getEvent("SwapInitiated"), (params) => {
+        /*
+         tokenIn: _tokenIn,
+        tokenOut: _tokenOut,
+        fee: _poolFee,
+        recipient: msg.sender,
+        deadline: block.timestamp,
+        amountIn: _amount,
+        amountOutMinimum: 0,
+        sqrtPriceLimitX96: 0
+        */
+        console.log(`EVENT! Swap from ${params.tokenIn} to ${params.tokenOut} initiated, ${params.amountIn} in, sent to ${params.recipient}`);
     });
-
-    console.log(`Added ${await contract.listenerCount("SwapInitiated")} event listener`);
-
-    // Listen for OwnershipTransferred events
-    contract.on(contract.getEvent("OwnershipTransferred"), (previousOwner, newOwner) => {
-        console.log(`Ownership transferred from ${previousOwner} to ${newOwner}`);
-    });
-
-    // Listen for ApprovalSet events
-    contract.on(contract.getEvent("ApprovalSet"), (tokenIn, tokenOut, amountIn, amountOut, event) => {
-        console.log(`Swap from ${tokenIn} to ${tokenOut} completed, ${amountIn} in, ${amountOut} out`);
-    });
-
-    // Listen for TransferPerformed events
-    contract.on(contract.getEvent("TransferPerformed"), (tokenIn, tokenOut, amountIn, amountOut, event) => {
-        console.log(`Swap from ${tokenIn} to ${tokenOut} completed, ${amountIn} in, ${amountOut} out`);
-    });
-
-    console.log(`Added ${await contract.listenerCount("ApprovalSet")} event listener`);
 
 }

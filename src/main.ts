@@ -1,6 +1,7 @@
 import { deploySwapContract } from './deploySwapContract';
 import { deployFlashLoanContract } from './deployFlashLoanContract';
 import { executeSimpleFlashLoan } from './executeSimpleFlashLoan';
+import { executeSwapContract } from './executeSwapContract';
 import { executeSwapUniswapV3 } from './executeSwapUniswapV3';
 import { listenToSwapContractEvents } from './listenToSwapContractEvents';
 import { wrapEth } from './wrapEth';
@@ -12,16 +13,25 @@ async function flashLoan() {
   await executeSimpleFlashLoan(flashLoanAddress);
 }
 
-async function main() {
-  const swapContractAddress = await deploySwapContract();
+async function swapUniswapV3() {
   let provider = new ethers.JsonRpcProvider(process.env.LOCALHOST_JSONRPC_ENDPOINT);
   let wallet = await (await provider.getSigner()).getAddress();
-  
+
   await wrapEth("2", wallet);
 
-  await listenToSwapContractEvents(swapContractAddress);
-  
-  await executeSwapUniswapV3(swapContractAddress);
+  await executeSwapUniswapV3();
 }
 
-main().catch(console.error)// .finally(() => process.exit(0));
+async function main() {
+  const swapContractAddress = await deploySwapContract();
+  // let swapContractAddress = "0x9be634797af98cb560db23260b5f7c6e98accacf";
+
+  await wrapEth("2", swapContractAddress);
+  await wrapEth("2", await (await ethers.provider.getSigner()).getAddress());
+
+  await listenToSwapContractEvents(swapContractAddress);
+
+  await executeSwapContract(swapContractAddress);
+}
+
+main().catch(console.error).finally(() => process.exit(0));

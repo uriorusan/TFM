@@ -38,6 +38,9 @@ const config: HardhatUserConfig = {
       url: `${process.env.ALCHEMY_MAINNET_ENDPOINT_HTTPS}`,
       accounts: [process.env.PRIVATE_KEY as string],
     },
+    localhost: {
+      url: `http://localhost:8545`
+    },
     hardhat: {
       forking: {
         url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,

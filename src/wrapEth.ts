@@ -46,7 +46,7 @@ export async function wrapEth(amountEthToSwap: string, destinationAddress: strin
     tx = await pool.withdraw(WEthAddress, parsedEthToSwap, destinationAddress);
     await tx.wait();
 
-    console.log(`TX: ${JSON.stringify(await tx.getTransaction(), replacer, 4)}`); // Print the transaction data
+    // console.log(`TX: ${JSON.stringify(await tx.getTransaction(), replacer, 4)}`); // Print the transaction data
 
     // Get Balances of the flashLoanContract
     let balanceAfterWETH = Number(await WEth.balanceOf(destinationAddress)) / Number(WEthDecimals)

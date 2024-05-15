@@ -11,6 +11,99 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "InputSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"name": "SwapFinished",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "tokenIn",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "tokenOut",
+								"type": "address"
+							},
+							{
+								"internalType": "uint24",
+								"name": "fee",
+								"type": "uint24"
+							},
+							{
+								"internalType": "address",
+								"name": "recipient",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "deadline",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountIn",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountOutMinimum",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint160",
+								"name": "sqrtPriceLimitX96",
+								"type": "uint160"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct ISwapRouter.ExactInputSingleParams",
+						"name": "params",
+						"type": "tuple"
+					}
+				],
+				"name": "SwapInitiated",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -110,11 +203,11 @@
 			]
 		},
 		"contracts/SwapContract.sol": {
-			"keccak256": "0xb79185638378d5f3b84404fe35c301dd764a4144c42caeb9ccb38afc22277fa3",
+			"keccak256": "0xd33b0e89fe47aa83128c1c3f05e260cbaac08faa254604fb3d975883bddaa04d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://75971242044d2b88a381cc7e5b9ff8ba3adaca04ec5670c6fb38cc6f68f0b2ed",
-				"dweb:/ipfs/QmYMMiS6mN3d3QRCCoMVTXzsTXQRTR83YQ7jzup2EaG4UD"
+				"bzz-raw://76e0f1c733d9cfd708304a7ec5d73a11bead8b48f295141053d2c7a87ffa898b",
+				"dweb:/ipfs/QmVZ2QBccqELxHnpfS5yVwNjkzGAhGKS61FMdtqHchtKow"
 			]
 		}
 	},

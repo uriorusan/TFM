@@ -1,14 +1,18 @@
 import { ethers } from "hardhat";
 
 export async function deploySwapContract() {
-  const SwapContract = await ethers.getContractFactory("SwapContract");
-  
+  let signer = await ethers.provider.getSigner();
+
   console.log("Deploying SwapContract...")
-  const swapContract = await SwapContract.deploy();
-  
+
+  const SwapContract = await ethers.getContractFactory("SwapContract", signer);
+  let swapContract = await SwapContract.deploy();
+
   console.log("Waiting for SwapContract deployment...")
-  await swapContract.waitForDeployment();
-  
+  swapContract.waitForDeployment();
+
+  console.log("SwapContract deployed with transaction:", JSON.stringify(await swapContract.deploymentTransaction(), null, 2));
+
   let address = await swapContract.getAddress();
   console.log("SwapContract deployed to:", address);
   return address;
