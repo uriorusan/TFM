@@ -130,13 +130,13 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IDex__factory>;
     getContractFactory(
-      name: "FlashLoan_2",
+      name: "FlashLoanOriol",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.FlashLoan_2__factory>;
+    ): Promise<Contracts.FlashLoanOriol__factory>;
     getContractFactory(
-      name: "IDexInteraction",
+      name: "FlashLoanOriolMultiple",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IDexInteraction__factory>;
+    ): Promise<Contracts.FlashLoanOriolMultiple__factory>;
     getContractFactory(
       name: "FlashLoanV2",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -304,15 +304,15 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IDex>;
     getContractAt(
-      name: "FlashLoan_2",
+      name: "FlashLoanOriol",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.FlashLoan_2>;
+    ): Promise<Contracts.FlashLoanOriol>;
     getContractAt(
-      name: "IDexInteraction",
+      name: "FlashLoanOriolMultiple",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.IDexInteraction>;
+    ): Promise<Contracts.FlashLoanOriolMultiple>;
     getContractAt(
       name: "FlashLoanV2",
       address: string | ethers.Addressable,
@@ -456,13 +456,13 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IDex>;
     deployContract(
-      name: "FlashLoan_2",
+      name: "FlashLoanOriol",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.FlashLoan_2>;
+    ): Promise<Contracts.FlashLoanOriol>;
     deployContract(
-      name: "IDexInteraction",
+      name: "FlashLoanOriolMultiple",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IDexInteraction>;
+    ): Promise<Contracts.FlashLoanOriolMultiple>;
     deployContract(
       name: "FlashLoanV2",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -630,15 +630,15 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IDex>;
     deployContract(
-      name: "FlashLoan_2",
+      name: "FlashLoanOriol",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.FlashLoan_2>;
+    ): Promise<Contracts.FlashLoanOriol>;
     deployContract(
-      name: "IDexInteraction",
+      name: "FlashLoanOriolMultiple",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IDexInteraction>;
+    ): Promise<Contracts.FlashLoanOriolMultiple>;
     deployContract(
       name: "FlashLoanV2",
       args: any[],

@@ -30,10 +30,8 @@ contract SwapContract {
         uint256 _amount,
         uint24 _poolFee
     )
-    external onlyOwner returns (uint256 amountOut)
+    external returns (uint256 amountOut)
     {
-
-        emit InputSet(_tokenIn, address(_swapRouter), _amount);
         ISwapRouter swapRouter = ISwapRouter(_swapRouter);
         IERC20 tokenIn = IERC20(_tokenIn);
 

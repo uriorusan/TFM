@@ -309,8 +309,8 @@
       ]
     },
     "/home/san/TFM/contracts/FlashLoanOriol.sol": {
-      "lastModificationDate": 1714322317432,
-      "contentHash": "745806adb47e2a7200f78bbcead50871",
+      "lastModificationDate": 1715899995538,
+      "contentHash": "a50e8a8d3b2b53535b90581bef1a37db",
       "sourceName": "contracts/FlashLoanOriol.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -340,19 +340,19 @@
         "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
         "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
         "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
-        "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol"
+        "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "./SwapContract.sol"
       ],
       "versionPragmas": [
         "^0.8.10"
       ],
       "artifacts": [
-        "FlashLoan_2",
-        "IDexInteraction"
+        "FlashLoanOriol"
       ]
     },
     "/home/san/TFM/contracts/SwapContract.sol": {
-      "lastModificationDate": 1715763552025,
-      "contentHash": "fe536efbb69d4220b8dc919b2128a92c",
+      "lastModificationDate": 1715900017648,
+      "contentHash": "79e4cc8d62beb6f238448a7b6285ece7",
       "sourceName": "contracts/SwapContract.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -1678,6 +1678,48 @@
       "artifacts": [
         "IERC20",
         "SingleSwap"
+      ]
+    },
+    "/home/san/TFM/contracts/FlashLoanOriolMultiple.sol": {
+      "lastModificationDate": 1715899081348,
+      "contentHash": "840ec33e90ade2f4b4a1b4fbd92ab8a2",
+      "sourceName": "contracts/FlashLoanOriolMultiple.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
+        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
+        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "./SwapContract.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "FlashLoanOriolMultiple"
       ]
     }
   }

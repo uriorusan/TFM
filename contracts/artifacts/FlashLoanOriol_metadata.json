@@ -1,0 +1,373 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_addressProvider",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_dexContractAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "ADDRESSES_PROVIDER",
+				"outputs": [
+					{
+						"internalType": "contract IPoolAddressesProvider",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "POOL",
+				"outputs": [
+					{
+						"internalType": "contract IPool",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "asset",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "premium",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "initiator",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "params",
+						"type": "bytes"
+					}
+				],
+				"name": "executeOperation",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "loanAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "poolFees",
+				"outputs": [
+					{
+						"internalType": "uint24",
+						"name": "",
+						"type": "uint24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_tokens",
+						"type": "address[]"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_swapRouters",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint24[]",
+						"name": "_poolFees",
+						"type": "uint24[]"
+					}
+				],
+				"name": "requestFlashLoanArbitrageSimple",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "swapRouters",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "tokens",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"requestFlashLoanArbitrageSimple(uint256,address[],address[],uint24[])": {
+					"params": {
+						"_amount": "amount to borrow",
+						"_poolFees": "array of pool fees. Correlated with _tokens",
+						"_swapRouters": "array of swap router addresses. Correlated with _tokens",
+						"_tokens": "array of token addresses to swap. [0] will be the one loaned, traded for [1] and traded back for [0]"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"executeOperation(address,uint256,uint256,address,bytes)": {
+					"notice": "This function is called after your contract has received the flash loaned amount. Here we execute the trades as per the directions provided."
+				},
+				"requestFlashLoanArbitrageSimple(uint256,address[],address[],uint24[])": {
+					"notice": "requestFlashLoanArbitrageSimple is the entry point for the contract. it will store the arbitrage details and initiate the flash loan"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/FlashLoanOriol.sol": "FlashLoanOriol"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol": {
+			"keccak256": "0xf57d62241e553696a1324d225663ba2e1a51db0a51ca236d0c1b009d89b6284c",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://d327db93b636790909aa137124f30a856ac1631cb79c476aa188f9627fda8d03",
+				"dweb:/ipfs/QmaxpmEoBFioeNYmpxJemyZ7aYF2nX1NKW1XDqREm7i6es"
+			]
+		},
+		"@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol": {
+			"keccak256": "0x3a04fc046c4f04c71ff230eba56e56bb718be41e4317f0c938bd287d81e384b1",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://8a02e8f6034e6536269eca55dc4e068e584a67cef530dea865d9a75e0e950ca3",
+				"dweb:/ipfs/QmdwL6Wvbk8QAyThNzPkeCfmTUryUdUnkbBDSRs5eigBmj"
+			]
+		},
+		"@aave/core-v3/contracts/flashloan/interfaces/IFlashLoanSimpleReceiver.sol": {
+			"keccak256": "0xba50a7834ddfdca3e3cfac09043f72699be42ff88925641ac30950a434b2b2ff",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://588513e813da8c9edf06bdd8912f33f5e304735e4b0145da9fb034eb46f205b5",
+				"dweb:/ipfs/Qmco68eeRnTUGyZaoZ9Vu4R7xzH9x1pUwP36nUvrxnxHxg"
+			]
+		},
+		"@aave/core-v3/contracts/interfaces/IPool.sol": {
+			"keccak256": "0xbfd2077251c8dc766a56d45f4b03eb07f3441323e79c0f794efea3657a99747f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://c6ff6221de0ea877932c73c0b99d3e4535f293053ae44f9f9d6b9d265e9af2f6",
+				"dweb:/ipfs/QmSTaEKrhz1xNVnx4oBzWw8DenYPShVzJoP1A9GTEWkAzX"
+			]
+		},
+		"@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol": {
+			"keccak256": "0x33d4308d9407b4ee2297fc4ba5acce1a96a6c658189e2778a4f6b90e032fb3b5",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://978336a2a40229ccc7749344be890862ea12e17e9fffe5bb977ba3841de07b5a",
+				"dweb:/ipfs/QmScNrQfDSPg1afJmkCty6fZkETUrWTmEXWeTmHoe7mSqa"
+			]
+		},
+		"@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol": {
+			"keccak256": "0x771cb99fd8519c974f7e12130387c4d9a997a6e8d0ac10e4303b842fe53efa88",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://0f41689d1d58bc13678c749bae8830f5a8b19b89cd135e962bf07d483350f828",
+				"dweb:/ipfs/QmQSNGDxjYGqT1GU2CZzsWUTNcAtcfkg1jDGTH516nCAfN"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0ea104e577e63faea3b69c415637e99e755dcbf64c5833d7140c35a714d6d90c",
+				"dweb:/ipfs/Qmau6x4Ns9XdyynRCNNp3RhLqijJjFm7z5fyZazfYFGYdq"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+			"keccak256": "0xaa761817f6cd7892fcf158b3c776b34551cde36f48ff9703d53898bc45a94ea2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0ad7c8d4d08938c8dfc43d75a148863fb324b80cf53e0a36f7e5a4ac29008850",
+				"dweb:/ipfs/QmcrhfPgVNf5mkdhQvy1pMv51TFokD3Y4Wa5WZhFqVh8UV"
+			]
+		},
+		"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol": {
+			"keccak256": "0x3f485fb1a44e8fbeadefb5da07d66edab3cfe809f0ac4074b1e54e3eb3c4cf69",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://095ce0626b41318c772b3ebf19d548282607f6a8f3d6c41c13edfbd5370c8652",
+				"dweb:/ipfs/QmVDZfJJ89UUCE1hMyzqpkZAtQ8jUsBgZNE5AMRG7RzRFS"
+			]
+		},
+		"@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol": {
+			"keccak256": "0x9bfaf1feb32814623e627ab70f2409760b15d95f1f9b058e2b3399a8bb732975",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a8a2c3e55965b61bcd91993d8e1d5d34b8b8a63e0fdfce87a85f6af92526fd53",
+				"dweb:/ipfs/QmQj2CSCSwqDSU4KMNWxGsN2336Cy64WgpV1X1EHXNZWxM"
+			]
+		},
+		"@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol": {
+			"keccak256": "0x9af98b0908c96320ca6d08b22f0efca864742f6adbe5794cafe2d1d2e808b0cd",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://da1d1e81e5bf534f0bf2934b3193db6cb1933f91ec006d2b88e9ad10a617a2d2",
+				"dweb:/ipfs/QmcPBk47QLMFWcX2y2S9eMFsJgoYWBd3R8ey55Bgmv6w6v"
+			]
+		},
+		"contracts/FlashLoanOriol.sol": {
+			"keccak256": "0x84f2e9588dea673b1a75cf940e9926bf664eaeb2f4128f440f7d88de26f21efa",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3ebc5c99293ec3eb44cbe9677c8ed1075d6c3fe53aa1862231e887ab74a215d3",
+				"dweb:/ipfs/QmRietShCXL1b7nBniwUNg9ie1CSPa4kj95nMJDKQ3EPGH"
+			]
+		},
+		"contracts/SwapContract.sol": {
+			"keccak256": "0x16c48e76458a639619be8c7f2a158ff1f8b5d197e2dda0814967ab2bb110ac7d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ade25776548a86c23058e07ee2b1b05a055323f1b02231834b92231e27053884",
+				"dweb:/ipfs/QmRGHLtevhSdQ9kSLp7Tqyzmgo7vC9w11A6uGkFbibcPdb"
+			]
+		}
+	},
+	"version": 1
+}

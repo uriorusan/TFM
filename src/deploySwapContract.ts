@@ -11,8 +11,6 @@ export async function deploySwapContract() {
   console.log("Waiting for SwapContract deployment...")
   swapContract.waitForDeployment();
 
-  console.log("SwapContract deployed with transaction:", JSON.stringify(await swapContract.deploymentTransaction(), null, 2));
-
   let address = await swapContract.getAddress();
   console.log("SwapContract deployed to:", address);
   return address;

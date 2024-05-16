@@ -28,7 +28,8 @@ export async function executeSwapContract(swapContractAddress: string) {
     const LinkDecimals = ethers.getBigInt(10) ** ethers.getBigInt(await Link.decimals());
 
     // get swapRouter address
-    const swapRouterAddress = "0xE592427A0AEce92De3Edee1F18E0157C05861564";
+    const swapRouterAddressUniswap = "0xE592427A0AEce92De3Edee1F18E0157C05861564"; // uniswap
+    const swapRouterAddressPancakeswap = "0x1b81D678ffb9C0263b24A97847620C99d213eB14";
     const poolFee = 3000;
 
     // Get LINK Balance of the wallet
@@ -39,14 +40,12 @@ export async function executeSwapContract(swapContractAddress: string) {
     let approveTx = await WEth.approve(swapContractAddress, amountToSwap);
     await approveTx.wait(); // Wait for the transaction to be mined
 
-    console.log(`Approved spending of WETH by the swapContract: ${JSON.stringify(await approveTx.getTransaction(), replacer, 4)}`)
-
     // Do the SwapSingle of 1 WETH for LINK
     console.log(`Swapping ${amountToSwap} WETH for LINK`);
-    let tx = await swapContract.swapSingle(WEthAddress, LinkAddress, swapRouterAddress, amountToSwap, poolFee);
+    let tx = await swapContract.swapSingle(WEthAddress, LinkAddress, swapRouterAddressUniswap, amountToSwap, poolFee);
     await tx.wait(); // Wait for the transaction to be mined
 
-    console.log(`Swap transaction completed: ${JSON.stringify(await tx.getTransaction(), replacer, 4)}`)
+    // console.log(`Swap transaction completed: ${JSON.stringify(await tx.getTransaction(), replacer, 4)}`)
 
     console.log(`WETH on the SwapContract: ${Number(await WEth.balanceOf(swapContractAddress)) / Number(WEthDecimals)}`)
 

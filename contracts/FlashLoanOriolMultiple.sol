@@ -9,7 +9,7 @@ import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IER
 import {SwapContract} from "./SwapContract.sol";
 
 
-contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
+contract FlashLoanOriolMultiple is FlashLoanSimpleReceiverBase {
     address payable owner;
     // Arrays to store loan details
     uint256 public loanAmount;
@@ -17,10 +17,6 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
     address[] public swapRouters;
     uint24[] public poolFees;
     SwapContract private swapContract;
-
-    // events
-    event FlashLoanReceived(address indexed asset, uint256 amount, uint256 premium, address indexed initiator);
-    event StoredTransactions(uint256 _amount, address[] tokens, address[] swapRouters, uint24[] poolFees);
 
     constructor(address _addressProvider, address _dexContractAddress)
         FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) // Initialize the parent contract with the address provider
@@ -44,28 +40,30 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
         require(msg.sender == address(POOL), "Call must come from POOL");
         require(asset == tokens[0], "Asset must match the loan token");
 
-        emit FlashLoanReceived(asset, amount, premium, initiator);
+        uint256 arrayLength = tokens.length;
 
         // approve the dex contract to spend the loaned amount and all other tokens
-        IERC20(tokens[0]).approve(address(swapContract), amount);
-
-        uint256 amountOut = swapContract.swapSingle(
-            tokens[0],
-            tokens[1], // Assuming each pool address is also the destination token address
-            swapRouters[0], // Assuming each pool address is also the router address
-            amount, // Destination pool for the trade
-            poolFees[0] // Fee for the trade
-        );
+        uint256 amountOut = amount;
+        for (uint n = 0; n < arrayLength -1; n++) {
+            IERC20(tokens[n]).approve(address(swapContract), amountOut);
+            amountOut = swapContract.swapSingle(
+                tokens[n],
+                tokens[n+1], // Assuming each pool address is also the destination token address
+                swapRouters[n], // Assuming each pool address is also the router address
+                amountOut, // Destination pool for the trade
+                poolFees[n] // Fee for the trade
+            );
+        }
 
         // approve the dex contract to spend the loaned amount and all other tokens
-        IERC20(tokens[1]).approve(address(swapContract), amountOut);
+        IERC20(tokens[tokens.length]).approve(address(swapContract), amountOut);
 
         swapContract.swapSingle(
-            tokens[1],
+            tokens[arrayLength],
             tokens[0], // Assuming each pool address is also the destination token address
-            swapRouters[1], // Assuming each pool address is also the router address
+            swapRouters[arrayLength], // Assuming each pool address is also the router address
             amountOut, // Destination pool for the trade
-            poolFees[1] // Fee for the trade
+            poolFees[arrayLength] // Fee for the trade
         );
 
         // Calculate the total amount owed including the premium
@@ -76,22 +74,22 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
     }
 
     /**
-        * requestFlashLoanArbitrageSimple is the entry point for the contract.
+        * requestFlashLoanArbitrageMultiple is the entry point for the contract.
         * it will store the arbitrage details and initiate the flash loan
         * @param _amount amount to borrow
         * @param _tokens array of token addresses to swap. [0] will be the one loaned, traded for [1] and traded back for [0]
         * @param _swapRouters array of swap router addresses. Correlated with _tokens
         * @param _poolFees array of pool fees. Correlated with _tokens
     */
-    function requestFlashLoanArbitrageSimple(
+    function requestFlashLoanArbitrageMultiple(
         uint256 _amount,
-        address[] memory _tokens,
-        address[] memory _swapRouters,
-        uint24[] memory _poolFees
+        address[] calldata _tokens,
+        address[] calldata _swapRouters,
+        uint24[] calldata _poolFees
         )
         onlyOwner() public
         {
-        require(_tokens.length == 2, "Array length must be 2");
+        require(_tokens.length >= 2, "Array length must greater than 2");
         require(_tokens.length == _swapRouters.length && _tokens.length == _poolFees.length, "Array lengths must match");
 
         // Store the details for use in executeOperation
@@ -99,8 +97,6 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
         tokens = _tokens;
         swapRouters = _swapRouters;
         poolFees = _poolFees;
-
-        emit StoredTransactions(loanAmount, tokens, swapRouters, poolFees);
 
         // prepare the rest of the data
         address receiverAddress = address(this);

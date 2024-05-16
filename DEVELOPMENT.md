@@ -60,9 +60,31 @@ Debugging session:
 - Realised that the deployment address of the contract when running main.ts was always the same. After a quick google search, I found that this is
 expected due to how the contract deployment addresses are calculated [link](https://ethereum.stackexchange.com/questions/17927/how-to-deploy-smart-contract-in-predefined-contract-address-in-private-ethereum). In summary, the contract address is calculated from a deterministic pseudorandom formula that receives as input the wallet address of the deployer and the nonce (number of times this wallet has transacted). Since the nonce is 0 for the predifined wallet addresses, the deployment address is always the same.
 
--
+- After running the code from zero, the fact that the contract address was "new" allowed it to work.
+
+From there, I modified the FlashLoanOriol contract to receive three arrays of two values each:
+
+- requestFlashLoan is the entry point for the contract.
+- it will store the arbitrage details and initiate the flash loan
+- @param _amount amount to borrow
+- @param _tokens array of token addresses to swap. [0] will be the one loaned, traded for [1] and traded back for [0]
+- @param _swapRouters array of swap router addresses. Correlated with _tokens
+- param _poolFees array of pool fees. Correlated with _tokens
+
+This allows us to indicate a list of swaps as a three arrays:
+
+- Start by swapping token 0 for 1 on swapRouter 0 with poolFee 0.
+- End by swapping n for 0 on swapRouter n with poolFee n.
+- in between, token t for t+1, on swapRouter t+1 with poolFee t+1.
+- Always trade the max amount of token t available at that step.
+
+I divided this in two contracts for minimal fees, one that allows only one trade and another that allows n trades, called Simple and Multiple
 
 
+I've been debugging further, and apparently I can only trade with Uniswap. I've tried both Sushiswap and PancakeSwap and both failed.
+I'm trying to figure out why this is the case, as they are direct clones of Uniswap:
+- apparently sushi had a hack a while back and did something to the Ethereum SwapRouter?
+- Pancakeswap should work, I have no idea why it doesn't.
 
 
 

@@ -1,14 +1,17 @@
 import { deploySwapContract } from './deploySwapContract';
-import { deployFlashLoanContract } from './deployFlashLoanContract';
+import { deployFlashLoanV3Contract } from './deployFlashLoanV3Contract';
+import { deployFlashLoanOriolContract } from './deployFlashLoanOriolContract';
 import { executeSimpleFlashLoan } from './executeSimpleFlashLoan';
 import { executeSwapContract } from './executeSwapContract';
 import { executeSwapUniswapV3 } from './executeSwapUniswapV3';
 import { listenToSwapContractEvents } from './listenToSwapContractEvents';
+import { executeFlashLoanOriol } from './executeFlashLoanOriol';
 import { wrapEth } from './wrapEth';
 import { ethers } from "hardhat";
+import { fundWithEth } from './fundWithEth';
 
 async function flashLoan() {
-  const flashLoanAddress = await deployFlashLoanContract();
+  const flashLoanAddress = await deployFlashLoanV3Contract();
   await wrapEth("2", flashLoanAddress)
   await executeSimpleFlashLoan(flashLoanAddress);
 }
@@ -22,9 +25,8 @@ async function swapUniswapV3() {
   await executeSwapUniswapV3();
 }
 
-async function main() {
+async function swapContract() {
   const swapContractAddress = await deploySwapContract();
-  // let swapContractAddress = "0x9be634797af98cb560db23260b5f7c6e98accacf";
 
   await wrapEth("2", swapContractAddress);
   await wrapEth("2", await (await ethers.provider.getSigner()).getAddress());
@@ -34,4 +36,18 @@ async function main() {
   await executeSwapContract(swapContractAddress);
 }
 
-main().catch(console.error).finally(() => process.exit(0));
+async function main() {
+  const swapContractAddress = await deploySwapContract();
+  let flashLoanContractAddress = await deployFlashLoanOriolContract(swapContractAddress);
+
+  await wrapEth("10", await (await ethers.provider.getSigner()).getAddress());
+
+  await fundWithEth(flashLoanContractAddress, "10");
+
+  await executeSwapContract(swapContractAddress);
+
+  // await executeFlashLoanOriol(flashLoanContractAddress);
+}
+
+// Run main and do not exit
+main().catch(console.error);

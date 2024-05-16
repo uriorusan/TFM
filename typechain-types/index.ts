@@ -64,10 +64,10 @@ export type { FlashLoanArbitrage } from "./contracts/FlashLoanArbitrage.sol/Flas
 export { FlashLoanArbitrage__factory } from "./factories/contracts/FlashLoanArbitrage.sol/FlashLoanArbitrage__factory";
 export type { IDex } from "./contracts/FlashLoanArbitrage.sol/IDex";
 export { IDex__factory } from "./factories/contracts/FlashLoanArbitrage.sol/IDex__factory";
-export type { FlashLoan_2 } from "./contracts/FlashLoanOriol.sol/FlashLoan_2";
-export { FlashLoan_2__factory } from "./factories/contracts/FlashLoanOriol.sol/FlashLoan_2__factory";
-export type { IDexInteraction } from "./contracts/FlashLoanOriol.sol/IDexInteraction";
-export { IDexInteraction__factory } from "./factories/contracts/FlashLoanOriol.sol/IDexInteraction__factory";
+export type { FlashLoanOriol } from "./contracts/FlashLoanOriol";
+export { FlashLoanOriol__factory } from "./factories/contracts/FlashLoanOriol__factory";
+export type { FlashLoanOriolMultiple } from "./contracts/FlashLoanOriolMultiple";
+export { FlashLoanOriolMultiple__factory } from "./factories/contracts/FlashLoanOriolMultiple__factory";
 export type { FlashLoanV2 } from "./contracts/FlashLoanV2";
 export { FlashLoanV2__factory } from "./factories/contracts/FlashLoanV2__factory";
 export type { FlashLoanV3 } from "./contracts/FlashLoanV3";
