@@ -13,7 +13,7 @@
     "build": "hardhat typechain",
     "terminal": "npx hardhat console --network localhost",
     "main": "npx hardhat run --network localhost src/main.ts",
-    "start": "concurrently --kill-others --prefix-colors \"bgRed.bold,bgGreen.bold\" \"npm run blockchain\" \"sleep 10 && npm run main\""
+    "start": "concurrently --kill-others --prefix-colors \"bgRed.bold,bgGreen.bold\" \"npm run blockchain\" \"sleep 7 && npm run main\""
   },
   "dependencies": {
     "@aave/core-v3": "^1.18.0",
@@ -24,6 +24,8 @@
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.6",
     "@nomicfoundation/hardhat-ethers": "^3.0.5",
     "@openzeppelin/contracts": "^5.0.2",
+    "@pancakeswap/v3-core": "^1.0.2",
+    "@pancakeswap/v3-periphery": "^1.0.2",
     "@types/node": "^20.11.20",
     "@uniswap/sdk": "^3.0.3",
     "@uniswap/universal-router": "^1.6.0",

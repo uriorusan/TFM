@@ -86,6 +86,13 @@ I'm trying to figure out why this is the case, as they are direct clones of Unis
 - apparently sushi had a hack a while back and did something to the Ethereum SwapRouter?
 - Pancakeswap should work, I have no idea why it doesn't.
 
+After a bit of debugging, I discovered that Pancake swap has different default "poolFee" tiers, as opposed to Uniswap's 0.05%, 0.30%, and 1% (500, 3000 & 10000 in Eth's units), pancake uses 0.01%, 0.05%, 0.25%, and 1% (100, 500, 2500 & 10000).
+
+It also uses a differently named callback function when doing swaps, but after testing, swapContract works with both pancake and uni.
+
+After adding logging and changing an incorrect contract address, I've managed to do an arbitrage trade with the funds from a Flash Loan!! Finally!
+
+At first I saw that I was netting 0.13Eth of profit with a 1 ETH transaction, and I got curious. Upon further inspection it looks like Pancake V3 WETH-LINK pools is basically empty.
 
 
 

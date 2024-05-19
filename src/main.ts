@@ -2,51 +2,38 @@ import { deploySwapContract } from './deploySwapContract';
 import { deployFlashLoanV3Contract } from './deployFlashLoanV3Contract';
 import { deployFlashLoanOriolContract } from './deployFlashLoanOriolContract';
 import { executeSimpleFlashLoan } from './executeSimpleFlashLoan';
-import { executeSwapContract } from './executeSwapContract';
+import { executeSwapContractUni, executeSwapContractPancake } from './executeSwapContract';
 import { executeSwapUniswapV3 } from './executeSwapUniswapV3';
-import { listenToSwapContractEvents } from './listenToSwapContractEvents';
 import { executeFlashLoanOriol } from './executeFlashLoanOriol';
 import { wrapEth } from './wrapEth';
 import { ethers } from "hardhat";
 import { fundWithEth } from './fundWithEth';
 
-async function flashLoan() {
-  const flashLoanAddress = await deployFlashLoanV3Contract();
-  await wrapEth("2", flashLoanAddress)
-  await executeSimpleFlashLoan(flashLoanAddress);
-}
-
-async function swapUniswapV3() {
-  let provider = new ethers.JsonRpcProvider(process.env.LOCALHOST_JSONRPC_ENDPOINT);
-  let wallet = await (await provider.getSigner()).getAddress();
-
-  await wrapEth("2", wallet);
-
-  await executeSwapUniswapV3();
-}
-
-async function swapContract() {
-  const swapContractAddress = await deploySwapContract();
-
-  await wrapEth("2", swapContractAddress);
-  await wrapEth("2", await (await ethers.provider.getSigner()).getAddress());
-
-  await listenToSwapContractEvents(swapContractAddress);
-
-  await executeSwapContract(swapContractAddress);
-}
-
 async function main() {
-  const swapContractAddress = await deploySwapContract();
-  let flashLoanContractAddress = await deployFlashLoanOriolContract(swapContractAddress);
+  let wallet = await (await ethers.provider.getSigner()).getAddress();
+  const addressSwapContract = await deploySwapContract();
+  let addressFlashContractSimple = await deployFlashLoanV3Contract();
+  let addressFlashContractOriol = await deployFlashLoanOriolContract(addressSwapContract);
 
-  await wrapEth("10", await (await ethers.provider.getSigner()).getAddress());
+  // Fund the contracts and wallet
+  await wrapEth("10", wallet);
+  await wrapEth("1", addressFlashContractOriol);
 
-  await fundWithEth(flashLoanContractAddress, "10");
+  // Swap 1 WETH for LINK directly from the wallet
+  // await executeSwapUniswapV3();
 
-  await executeSwapContract(swapContractAddress);
+  // Request a FlashLoan to AAVE without doing any arbitrage, and pay it back
+  // await wrapEth("2", addressFlashContractSimple);
+  // await executeSimpleFlashLoan(addressFlashContractSimple);
 
-  // await executeFlashLoanOriol(flashLoanContractAddress);
+  // Execute a swap from a contract in UniswapV3
+  // await executeSwapContractUni(addressSwapContract);
+
+  // Execute a swap from a contract in PancakeV3
+  // await executeSwapContractPancake(addressSwapContract);
+
+  // Request a FlashLoan (from AAVE), do an arbitrage (buy in Uni, sell in Pancake) and pay it back
+  await executeFlashLoanOriol(addressFlashContractOriol);
 }
 
 // Run main and do not exit

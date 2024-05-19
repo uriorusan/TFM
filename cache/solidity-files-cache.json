@@ -43,7 +43,7 @@
       ]
     },
     "/home/san/TFM/node_modules/@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol": {
-      "lastModificationDate": 1709250081587,
+      "lastModificationDate": 1714329755141,
       "contentHash": "75709782c90506d3ce968d5a6e06b900",
       "sourceName": "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
       "solcConfig": {
@@ -119,7 +119,7 @@
       ]
     },
     "/home/san/TFM/node_modules/@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol": {
-      "lastModificationDate": 1709250081587,
+      "lastModificationDate": 1714329755141,
       "contentHash": "ca23b7c429c310a0837290e57cb08904",
       "sourceName": "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
       "solcConfig": {
@@ -266,686 +266,6 @@
       ],
       "artifacts": [
         "DataTypes"
-      ]
-    },
-    "/home/san/TFM/contracts/FlashLoanV3.sol": {
-      "lastModificationDate": 1714314800354,
-      "contentHash": "df203912e18c93898ba0c885f715c5a6",
-      "sourceName": "contracts/FlashLoanV3.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
-        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
-        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "FlashLoanV3"
-      ]
-    },
-    "/home/san/TFM/contracts/FlashLoanOriol.sol": {
-      "lastModificationDate": 1715899995538,
-      "contentHash": "a50e8a8d3b2b53535b90581bef1a37db",
-      "sourceName": "contracts/FlashLoanOriol.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
-        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
-        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
-        "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
-        "./SwapContract.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "FlashLoanOriol"
-      ]
-    },
-    "/home/san/TFM/contracts/SwapContract.sol": {
-      "lastModificationDate": 1715900017648,
-      "contentHash": "79e4cc8d62beb6f238448a7b6285ece7",
-      "sourceName": "contracts/SwapContract.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
-        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "SwapContract"
-      ]
-    },
-    "/home/san/TFM/node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol": {
-      "lastModificationDate": 1710635343970,
-      "contentHash": "ffd42687b3db01d30c24213d961fcf9f",
-      "sourceName": "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
-      ],
-      "versionPragmas": [
-        ">=0.7.5"
-      ],
-      "artifacts": [
-        "ISwapRouter"
-      ]
-    },
-    "/home/san/TFM/node_modules/@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol": {
-      "lastModificationDate": 1710635343970,
-      "contentHash": "f0616d1842da6584f8454c9b323d777f",
-      "sourceName": "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
-      ],
-      "versionPragmas": [
-        ">=0.6.0"
-      ],
-      "artifacts": [
-        "TransferHelper"
-      ]
-    },
-    "/home/san/TFM/node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol": {
-      "lastModificationDate": 1710632522001,
-      "contentHash": "a8ba2d37b0107911ae0e3b0e123cbd83",
-      "sourceName": "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.5.0"
-      ],
-      "artifacts": [
-        "IUniswapV3SwapCallback"
-      ]
-    },
-    "/home/san/TFM/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1711754730619,
-      "contentHash": "5517c8678c18eb1a8ba58810e7ca39ca",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC20"
-      ]
-    },
-    "/home/san/TFM/contracts/FlashLoanV2.sol": {
-      "lastModificationDate": 1714316757553,
-      "contentHash": "188c13289479eb6aa530db5be4225d15",
-      "sourceName": "contracts/FlashLoanV2.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@aave/protocol-v2/contracts/flashloan/base/FlashLoanReceiverBase.sol",
-        "@aave/protocol-v2/contracts/interfaces/ILendingPool.sol",
-        "@aave/protocol-v2/contracts/interfaces/ILendingPoolAddressesProvider.sol",
-        "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/IERC20.sol"
-      ],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "FlashLoanV2"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/interfaces/ILendingPool.sol": {
-      "lastModificationDate": 1714314720244,
-      "contentHash": "c9d32b9924ef08162c2453bcb64c569a",
-      "sourceName": "@aave/protocol-v2/contracts/interfaces/ILendingPool.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./ILendingPoolAddressesProvider.sol",
-        "../protocol/libraries/types/DataTypes.sol"
-      ],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "ILendingPool"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/interfaces/ILendingPoolAddressesProvider.sol": {
-      "lastModificationDate": 1714314720244,
-      "contentHash": "a487bfd067ce6e71ddc7e9cc91302bae",
-      "sourceName": "@aave/protocol-v2/contracts/interfaces/ILendingPoolAddressesProvider.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "ILendingPoolAddressesProvider"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/flashloan/base/FlashLoanReceiverBase.sol": {
-      "lastModificationDate": 1714314720244,
-      "contentHash": "342099eb47e5ca9af28b333264a5a149",
-      "sourceName": "@aave/protocol-v2/contracts/flashloan/base/FlashLoanReceiverBase.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../../dependencies/openzeppelin/contracts/SafeMath.sol",
-        "../../dependencies/openzeppelin/contracts/IERC20.sol",
-        "../../dependencies/openzeppelin/contracts/SafeERC20.sol",
-        "../interfaces/IFlashLoanReceiver.sol",
-        "../../interfaces/ILendingPoolAddressesProvider.sol",
-        "../../interfaces/ILendingPool.sol"
-      ],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "FlashLoanReceiverBase"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/IERC20.sol": {
-      "lastModificationDate": 1714314720244,
-      "contentHash": "91c0afdd4eb122474c0d0c040dab794a",
-      "sourceName": "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "IERC20"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/protocol/libraries/types/DataTypes.sol": {
-      "lastModificationDate": 1714314720234,
-      "contentHash": "2127b8d36674faba96bc703f72164a1a",
-      "sourceName": "@aave/protocol-v2/contracts/protocol/libraries/types/DataTypes.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "DataTypes"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/SafeMath.sol": {
-      "lastModificationDate": 1714314720254,
-      "contentHash": "cf6dbbc25d7163c47e5260b755361955",
-      "sourceName": "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/SafeMath.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "SafeMath"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/SafeERC20.sol": {
-      "lastModificationDate": 1714314720254,
-      "contentHash": "7274eaf096edf0d7dde9b3282e4fcb42",
-      "sourceName": "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/SafeERC20.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./IERC20.sol",
-        "./SafeMath.sol",
-        "./Address.sol"
-      ],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "SafeERC20"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/flashloan/interfaces/IFlashLoanReceiver.sol": {
-      "lastModificationDate": 1714314720244,
-      "contentHash": "5e569987e7faa6a858ede0e47939966b",
-      "sourceName": "@aave/protocol-v2/contracts/flashloan/interfaces/IFlashLoanReceiver.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../../interfaces/ILendingPoolAddressesProvider.sol",
-        "../../interfaces/ILendingPool.sol"
-      ],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "IFlashLoanReceiver"
-      ]
-    },
-    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/Address.sol": {
-      "lastModificationDate": 1714314720234,
-      "contentHash": "bdb6e9218c297368a6ccd434a6ceb0ff",
-      "sourceName": "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/Address.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "Address"
-      ]
-    },
-    "/home/san/TFM/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1711754730619,
-      "contentHash": "4c02fa6f7ae7b6c289cef80424f0c875",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../IERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC20Metadata"
       ]
     },
     "/home/san/TFM/node_modules/@aave/core-v3/contracts/dependencies/gnosis/contracts/GPv2SafeERC20.sol": {
@@ -1485,8 +805,316 @@
         "Errors"
       ]
     },
+    "/home/san/TFM/contracts/FlashLoanV3.sol": {
+      "lastModificationDate": 1715548634306,
+      "contentHash": "df203912e18c93898ba0c885f715c5a6",
+      "sourceName": "contracts/FlashLoanV3.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
+        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
+        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "FlashLoanV3"
+      ]
+    },
+    "/home/san/TFM/contracts/FlashLoanOriolMultiple.sol": {
+      "lastModificationDate": 1715899081348,
+      "contentHash": "840ec33e90ade2f4b4a1b4fbd92ab8a2",
+      "sourceName": "contracts/FlashLoanOriolMultiple.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
+        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
+        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "./SwapContract.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "FlashLoanOriolMultiple"
+      ]
+    },
+    "/home/san/TFM/contracts/SwapContract.sol": {
+      "lastModificationDate": 1715973135974,
+      "contentHash": "79e4cc8d62beb6f238448a7b6285ece7",
+      "sourceName": "contracts/SwapContract.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
+        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SwapContract"
+      ]
+    },
+    "/home/san/TFM/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+      "lastModificationDate": 1711754730619,
+      "contentHash": "4c02fa6f7ae7b6c289cef80424f0c875",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC20Metadata"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol": {
+      "lastModificationDate": 1710635343970,
+      "contentHash": "ffd42687b3db01d30c24213d961fcf9f",
+      "sourceName": "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
+      ],
+      "versionPragmas": [
+        ">=0.7.5"
+      ],
+      "artifacts": [
+        "ISwapRouter"
+      ]
+    },
+    "/home/san/TFM/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1711754730619,
+      "contentHash": "5517c8678c18eb1a8ba58810e7ca39ca",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol": {
+      "lastModificationDate": 1710635343970,
+      "contentHash": "f0616d1842da6584f8454c9b323d777f",
+      "sourceName": "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0"
+      ],
+      "artifacts": [
+        "TransferHelper"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol": {
+      "lastModificationDate": 1710632522001,
+      "contentHash": "a8ba2d37b0107911ae0e3b0e123cbd83",
+      "sourceName": "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IUniswapV3SwapCallback"
+      ]
+    },
     "/home/san/TFM/contracts/Imports.sol": {
-      "lastModificationDate": 1714343119139,
+      "lastModificationDate": 1715959169340,
       "contentHash": "2ca71b86fb848093b6f839f907301ebb",
       "sourceName": "contracts/Imports.sol",
       "solcConfig": {
@@ -1564,45 +1192,6 @@
         "IStableDebtToken"
       ]
     },
-    "/home/san/TFM/node_modules/@aave/core-v3/contracts/interfaces/IInitializableDebtToken.sol": {
-      "lastModificationDate": 1714329755141,
-      "contentHash": "86c2f027b96006b840048df4408b1583",
-      "sourceName": "@aave/core-v3/contracts/interfaces/IInitializableDebtToken.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./IAaveIncentivesController.sol",
-        "./IPool.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IInitializableDebtToken"
-      ]
-    },
     "/home/san/TFM/node_modules/@aave/core-v3/contracts/interfaces/IVariableDebtToken.sol": {
       "lastModificationDate": 1714329755141,
       "contentHash": "12e7a357e1b2ba7ab2021edaa959cbdf",
@@ -1642,8 +1231,89 @@
         "IVariableDebtToken"
       ]
     },
+    "/home/san/TFM/node_modules/@aave/core-v3/contracts/interfaces/IInitializableDebtToken.sol": {
+      "lastModificationDate": 1714329755141,
+      "contentHash": "86c2f027b96006b840048df4408b1583",
+      "sourceName": "@aave/core-v3/contracts/interfaces/IInitializableDebtToken.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IAaveIncentivesController.sol",
+        "./IPool.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IInitializableDebtToken"
+      ]
+    },
+    "/home/san/TFM/contracts/FlashLoanOriol.sol": {
+      "lastModificationDate": 1716159284956,
+      "contentHash": "cb8621ba89779bb6e6bb802719207ae0",
+      "sourceName": "contracts/FlashLoanOriol.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
+        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
+        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "./SwapContract.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "FlashLoanOriol"
+      ]
+    },
     "/home/san/TFM/contracts/SimpleSwap.sol": {
-      "lastModificationDate": 1715453640685,
+      "lastModificationDate": 1715884135582,
       "contentHash": "728df92aab0482780190a771bb7711e1",
       "sourceName": "contracts/SimpleSwap.sol",
       "solcConfig": {
@@ -1680,14 +1350,13 @@
         "SingleSwap"
       ]
     },
-    "/home/san/TFM/contracts/FlashLoanOriolMultiple.sol": {
-      "lastModificationDate": 1715899081348,
-      "contentHash": "840ec33e90ade2f4b4a1b4fbd92ab8a2",
-      "sourceName": "contracts/FlashLoanOriolMultiple.sol",
+    "/home/san/TFM/contracts/FlashLoanV2.sol": {
+      "lastModificationDate": 1715548678896,
+      "contentHash": "188c13289479eb6aa530db5be4225d15",
+      "sourceName": "contracts/FlashLoanV2.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.6.12",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
             "enabled": false,
             "runs": 200
@@ -1709,17 +1378,348 @@
         }
       },
       "imports": [
-        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
-        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
-        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
-        "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
-        "./SwapContract.sol"
+        "@aave/protocol-v2/contracts/flashloan/base/FlashLoanReceiverBase.sol",
+        "@aave/protocol-v2/contracts/interfaces/ILendingPool.sol",
+        "@aave/protocol-v2/contracts/interfaces/ILendingPoolAddressesProvider.sol",
+        "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/IERC20.sol"
       ],
       "versionPragmas": [
-        "^0.8.10"
+        "0.6.12"
       ],
       "artifacts": [
-        "FlashLoanOriolMultiple"
+        "FlashLoanV2"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/interfaces/ILendingPool.sol": {
+      "lastModificationDate": 1714314720244,
+      "contentHash": "c9d32b9924ef08162c2453bcb64c569a",
+      "sourceName": "@aave/protocol-v2/contracts/interfaces/ILendingPool.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./ILendingPoolAddressesProvider.sol",
+        "../protocol/libraries/types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "ILendingPool"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/interfaces/ILendingPoolAddressesProvider.sol": {
+      "lastModificationDate": 1714314720244,
+      "contentHash": "a487bfd067ce6e71ddc7e9cc91302bae",
+      "sourceName": "@aave/protocol-v2/contracts/interfaces/ILendingPoolAddressesProvider.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "ILendingPoolAddressesProvider"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/flashloan/base/FlashLoanReceiverBase.sol": {
+      "lastModificationDate": 1714314720244,
+      "contentHash": "342099eb47e5ca9af28b333264a5a149",
+      "sourceName": "@aave/protocol-v2/contracts/flashloan/base/FlashLoanReceiverBase.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../interfaces/IFlashLoanReceiver.sol",
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/ILendingPool.sol"
+      ],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "FlashLoanReceiverBase"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/IERC20.sol": {
+      "lastModificationDate": 1714314720244,
+      "contentHash": "91c0afdd4eb122474c0d0c040dab794a",
+      "sourceName": "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/protocol/libraries/types/DataTypes.sol": {
+      "lastModificationDate": 1714314720234,
+      "contentHash": "2127b8d36674faba96bc703f72164a1a",
+      "sourceName": "@aave/protocol-v2/contracts/protocol/libraries/types/DataTypes.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "DataTypes"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/SafeMath.sol": {
+      "lastModificationDate": 1714314720254,
+      "contentHash": "cf6dbbc25d7163c47e5260b755361955",
+      "sourceName": "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "SafeMath"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/SafeERC20.sol": {
+      "lastModificationDate": 1714314720254,
+      "contentHash": "7274eaf096edf0d7dde9b3282e4fcb42",
+      "sourceName": "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/SafeERC20.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC20.sol",
+        "./SafeMath.sol",
+        "./Address.sol"
+      ],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "SafeERC20"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/flashloan/interfaces/IFlashLoanReceiver.sol": {
+      "lastModificationDate": 1714314720244,
+      "contentHash": "5e569987e7faa6a858ede0e47939966b",
+      "sourceName": "@aave/protocol-v2/contracts/flashloan/interfaces/IFlashLoanReceiver.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/ILendingPool.sol"
+      ],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "IFlashLoanReceiver"
+      ]
+    },
+    "/home/san/TFM/node_modules/@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/Address.sol": {
+      "lastModificationDate": 1714314720234,
+      "contentHash": "bdb6e9218c297368a6ccd434a6ceb0ff",
+      "sourceName": "@aave/protocol-v2/contracts/dependencies/openzeppelin/contracts/Address.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "Address"
       ]
     }
   }

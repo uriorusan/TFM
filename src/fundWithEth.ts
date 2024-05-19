@@ -1,6 +1,7 @@
 import { ethers } from "hardhat";
 
 export async function fundWithEth(address: string, amount: string) {
+  console.log(`Funding ${address} with ${amount} ETH`);
   const signer = await ethers.provider.getSigner();
 
   let amountWei = ethers.parseEther(amount);

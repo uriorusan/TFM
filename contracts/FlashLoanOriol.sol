@@ -11,22 +11,26 @@ import {SwapContract} from "./SwapContract.sol";
 
 contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
     address payable owner;
-    // Arrays to store loan details
-    uint256 public loanAmount;
-    address[] public tokens;
-    address[] public swapRouters;
-    uint24[] public poolFees;
+
+    struct requestFlashLoanArbitrageSimpleParams {
+        uint256 amount;
+        address[] tokens;
+        address[] swapRouters;
+        uint24[] poolFees;
+    }
+
+    requestFlashLoanArbitrageSimpleParams public storedParams;
     SwapContract private swapContract;
 
     // events
     event FlashLoanReceived(address indexed asset, uint256 amount, uint256 premium, address indexed initiator);
-    event StoredTransactions(uint256 _amount, address[] tokens, address[] swapRouters, uint24[] poolFees);
+    event StoredTransactions(uint256 amount, address[] tokens, address[] swapRouters, uint24[] poolFees);
 
-    constructor(address _addressProvider, address _dexContractAddress)
+    constructor(address _addressProvider, address _addressSwapContract)
         FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) // Initialize the parent contract with the address provider
     {
         owner = payable(msg.sender); // make the deployer of the contract the owner
-        swapContract = SwapContract(_dexContractAddress);
+        swapContract = SwapContract(_addressSwapContract);
     }
 
     /**
@@ -42,35 +46,37 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
     ) external override returns (bool) {
         require(initiator == address(this), "Initiator must be this contract");
         require(msg.sender == address(POOL), "Call must come from POOL");
-        require(asset == tokens[0], "Asset must match the loan token");
+        require(asset == storedParams.tokens[0], "Asset must match the loan token");
 
         emit FlashLoanReceived(asset, amount, premium, initiator);
 
         // approve the dex contract to spend the loaned amount and all other tokens
-        IERC20(tokens[0]).approve(address(swapContract), amount);
+        IERC20(storedParams.tokens[0]).approve(address(swapContract), amount);
 
         uint256 amountOut = swapContract.swapSingle(
-            tokens[0],
-            tokens[1], // Assuming each pool address is also the destination token address
-            swapRouters[0], // Assuming each pool address is also the router address
-            amount, // Destination pool for the trade
-            poolFees[0] // Fee for the trade
+            storedParams.tokens[0],
+            storedParams.tokens[1],
+            storedParams.swapRouters[0],
+            amount,
+            storedParams.poolFees[0]
         );
 
         // approve the dex contract to spend the loaned amount and all other tokens
-        IERC20(tokens[1]).approve(address(swapContract), amountOut);
+        IERC20(storedParams.tokens[1]).approve(address(swapContract), amountOut);
 
         swapContract.swapSingle(
-            tokens[1],
-            tokens[0], // Assuming each pool address is also the destination token address
-            swapRouters[1], // Assuming each pool address is also the router address
-            amountOut, // Destination pool for the trade
-            poolFees[1] // Fee for the trade
+            storedParams.tokens[1],
+            storedParams.tokens[0],
+            storedParams.swapRouters[1],
+            amountOut,
+            storedParams.poolFees[1]
         );
 
         // Calculate the total amount owed including the premium
         uint256 amountOwed = amount + premium;
         IERC20(asset).approve(address(POOL), amountOwed);
+
+        IERC20(asset).transferFrom(address(this), address(owner), IERC20(asset).balanceOf(address(this)) - amountOwed);
 
         return true;
     }
@@ -78,42 +84,25 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
     /**
         * requestFlashLoanArbitrageSimple is the entry point for the contract.
         * it will store the arbitrage details and initiate the flash loan
-        * @param _amount amount to borrow
-        * @param _tokens array of token addresses to swap. [0] will be the one loaned, traded for [1] and traded back for [0]
-        * @param _swapRouters array of swap router addresses. Correlated with _tokens
-        * @param _poolFees array of pool fees. Correlated with _tokens
+        * @param _params - requestFlashLoanArbitrageSimpleParams
     */
-    function requestFlashLoanArbitrageSimple(
-        uint256 _amount,
-        address[] memory _tokens,
-        address[] memory _swapRouters,
-        uint24[] memory _poolFees
-        )
-        onlyOwner() public
+    function requestFlashLoanArbitrageSimple(requestFlashLoanArbitrageSimpleParams calldata _params) onlyOwner() public
         {
-        require(_tokens.length == 2, "Array length must be 2");
-        require(_tokens.length == _swapRouters.length && _tokens.length == _poolFees.length, "Array lengths must match");
+        require(_params.tokens.length == 2, "Array length must be 2");
+        require(_params.tokens.length == _params.swapRouters.length && _params.tokens.length == _params.poolFees.length, "Array lengths must match");
 
         // Store the details for use in executeOperation
-        loanAmount = _amount;
-        tokens = _tokens;
-        swapRouters = _swapRouters;
-        poolFees = _poolFees;
+        storedParams = _params;
 
-        emit StoredTransactions(loanAmount, tokens, swapRouters, poolFees);
-
-        // prepare the rest of the data
-        address receiverAddress = address(this);
-        bytes memory params = ""; // Optionally, could encode and pass relevant parameters
-        uint16 referralCode = 0; // if needed
+        emit StoredTransactions(storedParams.amount, storedParams.tokens, storedParams.swapRouters, storedParams.poolFees);
 
         // Initiate flash loan request
         POOL.flashLoanSimple(
-            receiverAddress,
-            _tokens[0],
-            loanAmount,
-            params,
-            referralCode
+            address(this),
+            storedParams.tokens[0],
+            storedParams.amount,
+            "",
+            0
         );
     }
 
