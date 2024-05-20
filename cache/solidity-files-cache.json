@@ -1,47 +1,6 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/home/san/TFM/contracts/FlashLoanArbitrage.sol": {
-      "lastModificationDate": 1714314200814,
-      "contentHash": "26122fc2bc20c9d79fb42e4edcc36b8c",
-      "sourceName": "contracts/FlashLoanArbitrage.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
-        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
-        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "FlashLoanArbitrage",
-        "IDex"
-      ]
-    },
     "/home/san/TFM/node_modules/@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol": {
       "lastModificationDate": 1714329755141,
       "contentHash": "75709782c90506d3ce968d5a6e06b900",
@@ -1312,44 +1271,6 @@
         "FlashLoanOriol"
       ]
     },
-    "/home/san/TFM/contracts/SimpleSwap.sol": {
-      "lastModificationDate": 1715884135582,
-      "contentHash": "728df92aab0482780190a771bb7711e1",
-      "sourceName": "contracts/SimpleSwap.sol",
-      "solcConfig": {
-        "version": "0.7.6",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol"
-      ],
-      "versionPragmas": [
-        "=0.7.6"
-      ],
-      "artifacts": [
-        "IERC20",
-        "SingleSwap"
-      ]
-    },
     "/home/san/TFM/contracts/FlashLoanV2.sol": {
       "lastModificationDate": 1715548678896,
       "contentHash": "188c13289479eb6aa530db5be4225d15",
@@ -1720,6 +1641,43 @@
       ],
       "artifacts": [
         "Address"
+      ]
+    },
+    "/home/san/TFM/contracts/FlashBotsUniswapQuery.sol": {
+      "lastModificationDate": 1716219636935,
+      "contentHash": "b734f88bfb91b74d585de6ad939e42cc",
+      "sourceName": "contracts/FlashBotsUniswapQuery.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "FlashBotsUniswapQuery",
+        "IUniswapV2Pair",
+        "UniswapV2Factory"
       ]
     }
   }

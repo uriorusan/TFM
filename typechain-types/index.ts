@@ -60,6 +60,12 @@ export type { IUniswapV3SwapCallback } from "./@uniswap/v3-core/contracts/interf
 export { IUniswapV3SwapCallback__factory } from "./factories/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback__factory";
 export type { ISwapRouter } from "./@uniswap/v3-periphery/contracts/interfaces/ISwapRouter";
 export { ISwapRouter__factory } from "./factories/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter__factory";
+export type { FlashBotsUniswapQuery } from "./contracts/FlashBotsUniswapQuery.sol/FlashBotsUniswapQuery";
+export { FlashBotsUniswapQuery__factory } from "./factories/contracts/FlashBotsUniswapQuery.sol/FlashBotsUniswapQuery__factory";
+export type { IUniswapV2Pair } from "./contracts/FlashBotsUniswapQuery.sol/IUniswapV2Pair";
+export { IUniswapV2Pair__factory } from "./factories/contracts/FlashBotsUniswapQuery.sol/IUniswapV2Pair__factory";
+export type { UniswapV2Factory } from "./contracts/FlashBotsUniswapQuery.sol/UniswapV2Factory";
+export { UniswapV2Factory__factory } from "./factories/contracts/FlashBotsUniswapQuery.sol/UniswapV2Factory__factory";
 export type { FlashLoanArbitrage } from "./contracts/FlashLoanArbitrage.sol/FlashLoanArbitrage";
 export { FlashLoanArbitrage__factory } from "./factories/contracts/FlashLoanArbitrage.sol/FlashLoanArbitrage__factory";
 export type { IDex } from "./contracts/FlashLoanArbitrage.sol/IDex";

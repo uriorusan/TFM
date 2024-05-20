@@ -2,10 +2,12 @@
 
 ## Running code
 ```shell
-# build the ABIs
-npm run build
-# set up the ethereum fork
-npm run setup
-# then
+# run main
 npm run main
+
+# run blockchain fork
+npm run blockchain
+
+# run main + blockchain fork
+npm run start
 ```

@@ -3,14 +3,19 @@ import { FlashLoanV3, IERC20Metadata, IPool, IPoolAddressesProvider, WrappedToke
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
 
-const MAINNET = false;
-const DOMAIN = MAINNET ? process.env.ALCHEMY_MAINNET_ENDPOINT_WSS : process.env.LOCALHOST_JSONRPC_ENDPOINT;
+export async function deployFlashLoanV3Contract() {
+    const FlashLoan = await ethers.getContractFactory("FlashLoanV3");
+    const flashLoan = await FlashLoan.deploy(AaveV3Ethereum.POOL_ADDRESSES_PROVIDER);
 
-const provider = new ethers.JsonRpcProvider(DOMAIN);
+    await flashLoan.waitForDeployment();
+    let flashLoanAddress = await flashLoan.getAddress();
 
-// Main function to execute the script
+    console.log("FlashLoan deployed to:", flashLoanAddress);
+    return flashLoanAddress;
+}
+
 export async function executeSimpleFlashLoan(flashLoanContractAddress: string) {
-    const signer = await provider.getSigner();
+    const signer = await ethers.provider.getSigner();
 
     // Get the FlashLoan contract instance
     const flashLoanContract: FlashLoanV3 = await ethers.getContractAt('FlashLoanV3', flashLoanContractAddress, signer);
@@ -35,5 +40,5 @@ export async function executeSimpleFlashLoan(flashLoanContractAddress: string) {
     console.log(`WETH Amount Before FlashLoan: ${balanceBeforeWETH}, WETH Amount After FlashLoan: ${balanceAfterWETH}`);
 }
 
-const replacer = (key: any, value: any) => 
+const replacer = (key: any, value: any) =>
     typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String

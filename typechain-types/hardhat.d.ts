@@ -122,6 +122,18 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ISwapRouter__factory>;
     getContractFactory(
+      name: "FlashBotsUniswapQuery",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.FlashBotsUniswapQuery__factory>;
+    getContractFactory(
+      name: "IUniswapV2Pair",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IUniswapV2Pair__factory>;
+    getContractFactory(
+      name: "UniswapV2Factory",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.UniswapV2Factory__factory>;
+    getContractFactory(
       name: "FlashLoanArbitrage",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.FlashLoanArbitrage__factory>;
@@ -294,6 +306,21 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.ISwapRouter>;
     getContractAt(
+      name: "FlashBotsUniswapQuery",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.FlashBotsUniswapQuery>;
+    getContractAt(
+      name: "IUniswapV2Pair",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IUniswapV2Pair>;
+    getContractAt(
+      name: "UniswapV2Factory",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.UniswapV2Factory>;
+    getContractAt(
       name: "FlashLoanArbitrage",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -448,6 +475,18 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ISwapRouter>;
     deployContract(
+      name: "FlashBotsUniswapQuery",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.FlashBotsUniswapQuery>;
+    deployContract(
+      name: "IUniswapV2Pair",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IUniswapV2Pair>;
+    deployContract(
+      name: "UniswapV2Factory",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.UniswapV2Factory>;
+    deployContract(
       name: "FlashLoanArbitrage",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.FlashLoanArbitrage>;
@@ -619,6 +658,21 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ISwapRouter>;
+    deployContract(
+      name: "FlashBotsUniswapQuery",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.FlashBotsUniswapQuery>;
+    deployContract(
+      name: "IUniswapV2Pair",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IUniswapV2Pair>;
+    deployContract(
+      name: "UniswapV2Factory",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.UniswapV2Factory>;
     deployContract(
       name: "FlashLoanArbitrage",
       args: any[],
