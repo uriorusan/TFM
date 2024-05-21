@@ -97,5 +97,8 @@ export abstract class ContractManager<T> {
 
         console.log(`Sent ${amount} weth to ${this.address}`)
     }
+
+    replacer = (key: any, value: any) =>
+        typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String
 }
 

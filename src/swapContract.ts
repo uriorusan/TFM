@@ -2,7 +2,7 @@
 import { SwapContract, IERC20Metadata } from '../typechain-types';
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
-import { ContractManager } from "./contractManager";
+import { ContractManager } from "./ContractManager";
 
 export class SwapContractManager extends ContractManager<SwapContract> {
 

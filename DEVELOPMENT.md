@@ -92,11 +92,27 @@ It also uses a differently named callback function when doing swaps, but after t
 
 After adding logging and changing an incorrect contract address, I've managed to do an arbitrage trade with the funds from a Flash Loan!! Finally!
 
-At first I saw that I was netting 0.13Eth of profit with a 1 ETH transaction, and I got curious. Upon further inspection it looks like Pancake V3 WETH-LINK pools is basically empty.
+At first I saw that I was netting 0.13Eth of profit with a 1 ETH transaction, and I got curious. Upon further inspection it looks like Pancake V3 WETH-LINK pools is basically empty of liquidity. I was also miscalculating, and actually losing 0.87Eth instead of gaining 1.13!
 
 
+## 20th of May - 26th of May 2024
 
+During the beggining of the week, I've dedicated time to refactoring the whole code base, which was a bit of a mess. I've now created the Contract Manager abstract class, which handles the deployment, initialisation and funding of the contracts. Other classes then implement this abstract class and have a whol lot of functionality baked in.
 
+This should help explaining in the documentation how everything actually works, which is nice!
+
+I've also refactored the swapContract, flashLoanSimple and flashLoanOriol to use the ContractManager, and they look much nicer now.
+
+Also, main.ts is also much more readable, for example:
+
+```
+  let swapContract = new SwapContractManager();
+  await swapContract.initialize();
+  await swapContract.fundWithWrappedEth("1", wallet);
+  await swapContract.executeOnUni();
+```
+
+I'll dedicate the rest of the week on writing the actual documentation of how the code works, and once that is done I'll try to find arbitrage opportunities, which I've left for last because I feel (although I might be wrong) that it's a solved problem. I'm sure that there are libraries out there that compute the arbitrage opportunities perfectly and quickly. I've seen [MEV-Inspect](https://docs.flashbots.net/flashbots-data/mev-inspect-py/quick-start), which should be a nice starting point for this.
 
 
 

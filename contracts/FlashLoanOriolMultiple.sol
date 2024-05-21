@@ -89,7 +89,7 @@ contract FlashLoanOriolMultiple is FlashLoanSimpleReceiverBase {
         )
         onlyOwner() public
         {
-        require(_tokens.length >= 2, "Array length must greater than 2");
+        require(_tokens.length > 2, "Array length must greater than 2");
         require(_tokens.length == _swapRouters.length && _tokens.length == _poolFees.length, "Array lengths must match");
 
         // Store the details for use in executeOperation

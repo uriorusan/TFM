@@ -1,44 +1,29 @@
 
-import { FlashLoanV3, IERC20Metadata, IPool, IPoolAddressesProvider, WrappedTokenGatewayV3, IAToken } from '../typechain-types';
+import { FlashLoanV3 } from '../typechain-types';
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
+import { ContractManager } from './ContractManager';
 
-export async function deployFlashLoanV3Contract() {
-    const FlashLoan = await ethers.getContractFactory("FlashLoanV3");
-    const flashLoan = await FlashLoan.deploy(AaveV3Ethereum.POOL_ADDRESSES_PROVIDER);
+export class SimpleFlashLoanContractManager extends ContractManager<FlashLoanV3> {
 
-    await flashLoan.waitForDeployment();
-    let flashLoanAddress = await flashLoan.getAddress();
+        constructor(address?: string) {
+            super("FlashLoanV3", address, [AaveV3Ethereum.POOL_ADDRESSES_PROVIDER]);
+        }
 
-    console.log("FlashLoan deployed to:", flashLoanAddress);
-    return flashLoanAddress;
+        execute = async () => {
+            console.log(`Will execute a FlashLoan using the contract: ${this.address}`);
+            const walletAddress = await this.signer.getAddress();
+
+            let balanceBeforeWETH = await this.getWEthBalance(walletAddress);
+
+            // Do the FlashLoan of 1 WETH
+            let amountToFlashLoan = ethers.parseEther("1") / ethers.getBigInt(1);
+            let tx = await this.contract.requestFlashLoan(this.wEthAddress, amountToFlashLoan);
+            await tx.wait(); // Wait for the transaction to be mined
+
+            // Get Balances of the flashLoanContract
+            let balanceAfterWETH = await this.getWEthBalance(walletAddress);
+
+            console.log(`WETH Amount Before Simple FlashLoan: ${balanceBeforeWETH}, WETH Amount After FlashLoan: ${balanceAfterWETH}`);
+        }
 }
-
-export async function executeSimpleFlashLoan(flashLoanContractAddress: string) {
-    const signer = await ethers.provider.getSigner();
-
-    // Get the FlashLoan contract instance
-    const flashLoanContract: FlashLoanV3 = await ethers.getContractAt('FlashLoanV3', flashLoanContractAddress, signer);
-
-    // Get WEth token instance
-    const WEthAddress = AaveV3Ethereum.ASSETS.WETH.UNDERLYING;
-    const WEth: IERC20Metadata = await ethers.getContractAt('IERC20Metadata', WEthAddress, signer);
-    const WEthDecimals = ethers.getBigInt(10) ** ethers.getBigInt(await WEth.decimals());
-
-    let balanceBeforeWETH = Number(await WEth.balanceOf(flashLoanContractAddress)) / Number(WEthDecimals)
-
-    // Do the FlashLoan of 1 WETH
-    let amountToFlashLoan = ethers.parseEther("1") / ethers.getBigInt(1);
-    let tx = await flashLoanContract.requestFlashLoan(WEthAddress, amountToFlashLoan);
-    await tx.wait(); // Wait for the transaction to be mined
-
-    console.log(`FlashLoan transaction completed: ${JSON.stringify(await tx.getTransaction(), replacer, 4)}`)
-
-    // Get Balances of the flashLoanContract
-    let balanceAfterWETH = Number(await WEth.balanceOf(flashLoanContractAddress)) / Number(WEthDecimals)
-
-    console.log(`WETH Amount Before FlashLoan: ${balanceBeforeWETH}, WETH Amount After FlashLoan: ${balanceAfterWETH}`);
-}
-
-const replacer = (key: any, value: any) =>
-    typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String

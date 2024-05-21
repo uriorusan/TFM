@@ -2,7 +2,7 @@
 import { FlashLoanOriol, IERC20Metadata } from '../typechain-types';
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
-import { ContractManager } from "./contractManager";
+import { ContractManager } from "./ContractManager";
 
 export class FlashLoanOriolContractManager extends ContractManager<FlashLoanOriol> {
     constructor (swapContractAddress: string, address?: string) {
@@ -35,14 +35,11 @@ export class FlashLoanOriolContractManager extends ContractManager<FlashLoanOrio
         let tx = await this.contract.requestFlashLoanArbitrageSimple(input);
         await tx.wait(); // Wait for the transaction to be mined
 
-        console.log(`FlashLoan transaction completed: ${JSON.stringify(await tx.getTransaction(), replacer, 4)}`);
+        console.log(`FlashLoan transaction completed: ${JSON.stringify(await tx.getTransaction(), this.replacer, 4)}`);
 
         let wEthAfter = await this.getWEthBalance(this.wallet);
         console.log(`WETH Amount Before FlashLoan: ${wEthBefore} (wallet), ${wEthBeforeContract} (contract), WETH Amount After FlashLoan: ${wEthAfter}.`);
-        let result = wEthBefore + wEthBeforeContract - wEthAfter
+        let result = wEthAfter - (wEthBefore + wEthBeforeContract);
         console.log(`${result > 0 ? "Profit" : "Loss"} of ${result} WETH`);
     }
 }
-
-const replacer = (key: any, value: any) =>
-    typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String

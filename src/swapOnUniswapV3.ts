@@ -3,7 +3,7 @@ import { SwapContract, IERC20Metadata, ISwapRouter } from '../typechain-types';
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
 
-// Main function to execute the script
+
 export async function executeSwapUniswapV3() {
     console.log(`Will execute a Swap to UniswapV3 SwapRouter from wallet.`)
     const signer = await ethers.provider.getSigner();
