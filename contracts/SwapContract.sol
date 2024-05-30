@@ -36,7 +36,7 @@ contract SwapContract {
         IERC20 tokenIn = IERC20(_tokenIn);
 
         // This transaction needs to be approved by the msg.sender
-        // He shall do tokenIn.approve(SwapContractAddress, _amount) before calling this function
+        // It shall do tokenIn.approve(SwapContractAddress, _amount) before calling this function
         tokenIn.transferFrom(msg.sender, address(this), _amount);
 
         tokenIn.approve(_swapRouter, _amount);

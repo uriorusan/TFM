@@ -7,11 +7,12 @@ import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAd
 import {IERC20} from "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import {SwapContract} from "./SwapContract.sol";
+import "hardhat/console.sol";
 
 
 contract FlashLoanOriolMultiple is FlashLoanSimpleReceiverBase {
     address payable owner;
-    // Arrays to store loan details
+
     uint256 public loanAmount;
     address[] public tokens;
     address[] public swapRouters;
@@ -39,36 +40,67 @@ contract FlashLoanOriolMultiple is FlashLoanSimpleReceiverBase {
         require(initiator == address(this), "Initiator must be this contract");
         require(msg.sender == address(POOL), "Call must come from POOL");
         require(asset == tokens[0], "Asset must match the loan token");
+        params; // to silence the warning
 
-        uint256 arrayLength = tokens.length;
-
-        // approve the dex contract to spend the loaned amount and all other tokens
+        uint256 n = tokens.length - 1;
+        console.log("current token amount: %s", IERC20(tokens[0]).balanceOf(address(this)));
         uint256 amountOut = amount;
-        for (uint n = 0; n < arrayLength -1; n++) {
-            IERC20(tokens[n]).approve(address(swapContract), amountOut);
-            amountOut = swapContract.swapSingle(
-                tokens[n],
-                tokens[n+1], // Assuming each pool address is also the destination token address
-                swapRouters[n], // Assuming each pool address is also the router address
-                amountOut, // Destination pool for the trade
-                poolFees[n] // Fee for the trade
+
+        for (uint i = 0; i < n; i++) {
+            IERC20(tokens[i]).approve(address(swapContract), amountOut);
+
+            console.log(
+                "going to swap %s for %s, trading an amount of the first token %s",
+                IERC20Metadata(tokens[i]).symbol(),
+                IERC20Metadata(tokens[i+1]).symbol(),
+                amountOut
             );
+
+            amountOut = swapContract.swapSingle(
+                tokens[i],
+                tokens[i+1],
+                swapRouters[i],
+                amountOut,
+                poolFees[i]
+            );
+
+            console.log(
+            "Ended up with %s of %s",
+            IERC20(tokens[i+1]).balanceOf(address(this)),
+            IERC20Metadata(tokens[i+1]).symbol()
+        );
         }
 
-        // approve the dex contract to spend the loaned amount and all other tokens
-        IERC20(tokens[tokens.length]).approve(address(swapContract), amountOut);
+        console.log(
+            "going to swap %s for %s, trading an amount of the first token %s",
+            IERC20Metadata(tokens[n]).symbol(),
+            IERC20Metadata(tokens[0]).symbol(),
+            amountOut
+        );
+
+        IERC20(tokens[n]).approve(address(swapContract), amountOut);
 
         swapContract.swapSingle(
-            tokens[arrayLength],
-            tokens[0], // Assuming each pool address is also the destination token address
-            swapRouters[arrayLength], // Assuming each pool address is also the router address
-            amountOut, // Destination pool for the trade
-            poolFees[arrayLength] // Fee for the trade
+            tokens[n],
+            tokens[0],
+            swapRouters[n],
+            amountOut,
+            poolFees[n]
+        );
+
+        console.log(
+            "Ended up with %s of %s",
+            IERC20(tokens[0]).balanceOf(address(this)),
+            IERC20Metadata(tokens[0]).symbol()
         );
 
         // Calculate the total amount owed including the premium
         uint256 amountOwed = amount + premium;
+        console.log("amountOwed: %s", amountOwed);
+
         IERC20(asset).approve(address(POOL), amountOwed);
+
+        IERC20(asset).transfer(address(owner), IERC20(asset).balanceOf(address(this)) - amountOwed);
 
         return true;
     }
@@ -77,7 +109,7 @@ contract FlashLoanOriolMultiple is FlashLoanSimpleReceiverBase {
         * requestFlashLoanArbitrageMultiple is the entry point for the contract.
         * it will store the arbitrage details and initiate the flash loan
         * @param _amount amount to borrow
-        * @param _tokens array of token addresses to swap. [0] will be the one loaned, traded for [1] and traded back for [0]
+        * @param _tokens array of token addresses to swap
         * @param _swapRouters array of swap router addresses. Correlated with _tokens
         * @param _poolFees array of pool fees. Correlated with _tokens
     */
@@ -98,18 +130,13 @@ contract FlashLoanOriolMultiple is FlashLoanSimpleReceiverBase {
         swapRouters = _swapRouters;
         poolFees = _poolFees;
 
-        // prepare the rest of the data
-        address receiverAddress = address(this);
-        bytes memory params = ""; // Optionally, could encode and pass relevant parameters
-        uint16 referralCode = 0; // if needed
-
         // Initiate flash loan request
         POOL.flashLoanSimple(
-            receiverAddress,
+            address(this),
             _tokens[0],
             loanAmount,
-            params,
-            referralCode
+            "",
+            0
         );
     }
 

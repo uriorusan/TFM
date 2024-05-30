@@ -9,3 +9,6 @@ import "@aave/periphery-v3/contracts/misc/WrappedTokenGatewayV3.sol";
 import '@aave/core-v3/contracts/interfaces/IAToken.sol';
 import '@aave/core-v3/contracts/interfaces/IStableDebtToken.sol';
 import '@aave/core-v3/contracts/interfaces/IVariableDebtToken.sol';
+import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol';
+import '@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol';

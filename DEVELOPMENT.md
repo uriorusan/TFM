@@ -114,5 +114,27 @@ Also, main.ts is also much more readable, for example:
 
 I'll dedicate the rest of the week on writing the actual documentation of how the code works, and once that is done I'll try to find arbitrage opportunities, which I've left for last because I feel (although I might be wrong) that it's a solved problem. I'm sure that there are libraries out there that compute the arbitrage opportunities perfectly and quickly. I've seen [MEV-Inspect](https://docs.flashbots.net/flashbots-data/mev-inspect-py/quick-start), which should be a nice starting point for this.
 
+After a lot of investigation, I've found that finding arbitrage opportunities using FlashBots relies on having an Ethereum node running in a local server. This is obviously out of scope for this project and we'll have to find some alternative.
+
+So to start, I've implemented two classes to get the prices from any UniswapV2 and V3 pairs.
+
+This has allowed me to check for triangular arbitrage prices within UniswapV3, i.e. weth -> USDC -> dai -> weth
+
+To support this triangular arbitrage paths, I've also added a new class in the FlashLoanOriol file to handle more than two trades, which handles requesting a FlashLoan, doing 3 or more trades and then repaying the loan.
+
+I discovered that USDT does not comply with the ERC-20 standard, which is annoying, and used DAI instead.
+
+Then, I managed to execute the trade described above, but for some reason, trading dai for USDC results in a high slippage loss, from ~$3700 to ~$200. Currently investigating why that's the case.
+
+
+## 27th of May - 2nd of June 2024
+
+Two more weeks to go!
+
+Most of my week will be dedicated to finishing the actual deliverable document, but I've had a look at this code:
+
+https://github.com/flashbots/simple-blind-arbitrage/blob/main/src/BlindBackrunLogic.sol
+
+To try to find the specific formula used to get the exact arbitrage amounts to equilise the prize of two different liquidity pools.
 
 

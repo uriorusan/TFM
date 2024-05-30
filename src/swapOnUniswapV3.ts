@@ -49,7 +49,7 @@ export async function executeSwapUniswapV3() {
         amountIn: amountToSwap,
         amountOutMinimum: 0,
         sqrtPriceLimitX96: 0
-    } as ISwapRouter.ExactInputSingleParamsStruct;
+    } satisfies ISwapRouter.ExactInputSingleParamsStruct;
 
     let tx = await swapRouter.exactInputSingle(params);
     await tx.wait(); // Wait for the transaction to be mined

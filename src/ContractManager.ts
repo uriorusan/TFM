@@ -3,25 +3,26 @@ import { IERC20Metadata } from '../typechain-types';
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
 
-export abstract class ContractManager<T> {
+interface IContractManager<T> {
+    initialize(): Promise<void>;
+    extraInitalize?(): void;
+}
+
+export abstract class ContractManager<T> implements IContractManager<T> {
     signer: any;
-    wallet: string;
+    wallet: string = "";
     address: string;
-    contract: T;
+    contract: T = {} as T;
     contractName: string;
-    wEth: IERC20Metadata;
-    Link: IERC20Metadata;
+    wEth: IERC20Metadata = {} as IERC20Metadata;
+    Link: IERC20Metadata = {} as IERC20Metadata;
     wEthAddress: string = AaveV3Ethereum.ASSETS.WETH.UNDERLYING;
     LinkAddress: string = AaveV3Ethereum.ASSETS.LINK.UNDERLYING;
     deployParams: any[];
 
     constructor(contractName: string, address?: string, deployParams?: any[]) {
         this.address = address || "";
-        this.wallet = "";
         this.contractName = contractName;
-        this.wEth = {} as IERC20Metadata;
-        this.Link = {} as IERC20Metadata;
-        this.contract = {} as T;
         this.deployParams = deployParams || [];
     }
 
@@ -35,6 +36,7 @@ export abstract class ContractManager<T> {
         this.contract = await ethers.getContractAt(this.contractName, this.address, this.signer) as T;
         this.Link = await ethers.getContractAt('IERC20Metadata', AaveV3Ethereum.ASSETS.LINK.UNDERLYING, this.signer);
         this.wEth = await ethers.getContractAt('IERC20Metadata', AaveV3Ethereum.ASSETS.WETH.UNDERLYING, this.signer);
+        await this.extraInitalize?.();
     }
 
     private async deploy(): Promise<string> {
@@ -52,15 +54,15 @@ export abstract class ContractManager<T> {
     // If you don't provide an address, it uses the contract address
     getLinkBalance = async (address?: string) => {
         let LinkDecimals = ethers.getBigInt(10) ** ethers.getBigInt(await this.Link.decimals());
-        let balanceBeforeLink = Number(await this.Link.balanceOf(address || this.address)) / Number(LinkDecimals)
-        return balanceBeforeLink;
+        let balanceLink = Number(await this.Link.balanceOf(address || this.address)) / Number(LinkDecimals)
+        return balanceLink;
     }
 
     // If you don't provide an address, it uses the contract address
     getWEthBalance = async (address?: string) => {
         let wEthDecimals = ethers.getBigInt(10)**(await this.wEth.decimals());
-        let balanceBeforeWETH = Number(await this.wEth.balanceOf(address || this.address)) / Number(wEthDecimals);
-        return balanceBeforeWETH;
+        let balanceWETH = Number(await this.wEth.balanceOf(address || this.address)) / Number(wEthDecimals);
+        return balanceWETH;
     }
 
     fundWithEth = async (amount: string) => {
@@ -97,6 +99,12 @@ export abstract class ContractManager<T> {
 
         console.log(`Sent ${amount} weth to ${this.address}`)
     }
+
+    getErc20Token = async (address: string) => {
+        return await ethers.getContractAt('IERC20Metadata', address, this.signer);
+    }
+
+    async extraInitalize?(): Promise<void>;
 
     replacer = (key: any, value: any) =>
         typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String

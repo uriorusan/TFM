@@ -11,3 +11,6 @@ npm run blockchain
 # run main + blockchain fork
 npm run start
 ```
+
+
+Add docs on how to run code ->

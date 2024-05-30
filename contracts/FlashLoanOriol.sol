@@ -47,6 +47,7 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
         require(initiator == address(this), "Initiator must be this contract");
         require(msg.sender == address(POOL), "Call must come from POOL");
         require(asset == storedParams.tokens[0], "Asset must match the loan token");
+        params; // to silence the warning
 
         emit FlashLoanReceived(asset, amount, premium, initiator);
 
