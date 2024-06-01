@@ -1,6 +1,6 @@
 
 import { FACTORY_ADDRESS } from '@uniswap/v3-sdk';
-import { ContractManager } from '../ContractManager';
+import { ContractManager } from '../lib/ContractManager';
 import { computePoolAddress } from '@uniswap/v3-sdk/dist/';
 import { Token } from '@uniswap/sdk-core';
 import { IUniswapV3Factory } from '../../typechain-types';

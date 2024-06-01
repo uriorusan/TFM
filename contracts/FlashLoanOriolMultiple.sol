@@ -6,7 +6,7 @@ import {FlashLoanSimpleReceiverBase} from "@aave/core-v3/contracts/flashloan/bas
 import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
 import {IERC20} from "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
-import {SwapContract} from "./SwapContract.sol";
+import {SwapContractUniV3} from "./SwapContractUniV3.sol";
 import "hardhat/console.sol";
 
 
@@ -17,13 +17,13 @@ contract FlashLoanOriolMultiple is FlashLoanSimpleReceiverBase {
     address[] public tokens;
     address[] public swapRouters;
     uint24[] public poolFees;
-    SwapContract private swapContract;
+    SwapContractUniV3 private swapContract;
 
     constructor(address _addressProvider, address _dexContractAddress)
         FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) // Initialize the parent contract with the address provider
     {
         owner = payable(msg.sender); // make the deployer of the contract the owner
-        swapContract = SwapContract(_dexContractAddress);
+        swapContract = SwapContractUniV3(_dexContractAddress);
     }
 
     /**

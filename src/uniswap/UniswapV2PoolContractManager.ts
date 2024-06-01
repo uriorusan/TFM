@@ -1,6 +1,6 @@
 
 import { FACTORY_ADDRESS } from '@uniswap/v3-sdk';
-import { ContractManager } from '../ContractManager';
+import { ContractManager } from '../lib/ContractManager';
 import { ethers } from 'hardhat'
 import { IUniswapV2Pair, IERC20Metadata } from '../../typechain-types';
 
@@ -15,7 +15,7 @@ export class UniswapV2PoolContractManager extends ContractManager<IUniswapV2Pair
     reserves = [this.zero,this.zero,this.zero];
 
     constructor(address?: string) {
-        super("IUniswapV2Pair", address);
+        super("@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol:IUniswapV2Pair", address);
     }
 
     async extraInitalize() {

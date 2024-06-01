@@ -38,8 +38,3 @@ async function main() {
 
 // Run Main function
 main().catch(console.error)
-
-
-// Custom replacer function to convert BigInt to strings
-const replacer = (key: any, value: any) => 
-    typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String

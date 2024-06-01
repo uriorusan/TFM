@@ -5,15 +5,16 @@
     "@typechain/ethers-v6": "^0.5.1",
     "@typechain/hardhat": "^9.1.0",
     "concurrently": "^8.2.2",
-    "hardhat": "^2.19.4",
+    "hardhat": "^2.22.4",
     "typechain": "^8.3.2"
   },
   "scripts": {
     "blockchain": "dotenv -f .env run -- bash -c 'npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/$ALCHEMY_API_KEY'",
     "build": "hardhat typechain",
     "terminal": "npx hardhat console --network localhost",
+    "getPrice": "npx hardhat run src/getPrice.ts",
     "main": "npx hardhat run --network localhost src/main.ts",
-    "start": "concurrently --kill-others --prefix-colors \"bgRed.bold,bgGreen.bold\" \"npm run blockchain\" \"sleep 7 && npm run main\""
+    "start": "concurrently --kill-others --prefix-colors \"bgRed.bold,bgGreen.bold\" \"npm run blockchain\" \"sleep 10 && npm run main\""
   },
   "dependencies": {
     "@aave/core-v3": "^1.18.0",

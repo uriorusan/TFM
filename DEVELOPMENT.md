@@ -137,4 +137,11 @@ https://github.com/flashbots/simple-blind-arbitrage/blob/main/src/BlindBackrunLo
 
 To try to find the specific formula used to get the exact arbitrage amounts to equilise the prize of two different liquidity pools.
 
+After this, I've reestructured the code to ensure that all the code that remains is useful, and cleaned up a little bit the folder structure for usability.
+
+I've also dedicated time to creating a new contract to trade with UniswapV2, which literally took me less than 10 minutes, which was nice. We can now find disparities in price between Uniswap V2 & V3 and try to exploit these differences. Now, with the new getPrice.ts, we can find when there is a difference in price in the two pools and try to exploit them. I'm not sure how to find the exact formula yet, but for now we can just trade a little bit and see how much we profit, if anything.
+
+Since I'm looking at USDC/WETH price, I think we can start with 1 WETH and see.
+
+Calculating the exact amount will require maths and time, and I don't have any more time.
 

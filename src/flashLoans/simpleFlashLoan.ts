@@ -1,8 +1,8 @@
 
-import { FlashLoanV3 } from '../typechain-types';
+import { FlashLoanV3 } from '../../typechain-types';
 import { ethers } from "hardhat";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
-import { ContractManager } from './ContractManager';
+import { ContractManager } from '../lib/ContractManager';
 
 export class SimpleFlashLoanContractManager extends ContractManager<FlashLoanV3> {
 

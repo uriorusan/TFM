@@ -805,8 +805,8 @@
       ]
     },
     "/home/san/TFM/contracts/FlashLoanOriolMultiple.sol": {
-      "lastModificationDate": 1716932168728,
-      "contentHash": "d2a17a766e90926253d49a223ecc6ffd",
+      "lastModificationDate": 1717243030465,
+      "contentHash": "15552339d27323f8f7bc19267d9d3d45",
       "sourceName": "contracts/FlashLoanOriolMultiple.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -837,7 +837,7 @@
         "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
         "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
         "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
-        "./SwapContract.sol",
+        "./SwapContractUniV3.sol",
         "hardhat/console.sol"
       ],
       "versionPragmas": [
@@ -845,46 +845,6 @@
       ],
       "artifacts": [
         "FlashLoanOriolMultiple"
-      ]
-    },
-    "/home/san/TFM/contracts/SwapContract.sol": {
-      "lastModificationDate": 1716731928147,
-      "contentHash": "ebf00df6eecd3c3206824a0ca1e1b84a",
-      "sourceName": "contracts/SwapContract.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
-        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "SwapContract"
       ]
     },
     "/home/san/TFM/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
@@ -1234,8 +1194,8 @@
       ]
     },
     "/home/san/TFM/contracts/FlashLoanOriol.sol": {
-      "lastModificationDate": 1716932172268,
-      "contentHash": "ac8c6a3429f03f526b3a5057639ac6ad",
+      "lastModificationDate": 1717242827255,
+      "contentHash": "831e7ffddbb00a73ef20766b2d9a6049",
       "sourceName": "contracts/FlashLoanOriol.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -1266,7 +1226,7 @@
         "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
         "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
         "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
-        "./SwapContract.sol"
+        "./SwapContractUniV3.sol"
       ],
       "versionPragmas": [
         "^0.8.10"
@@ -1647,43 +1607,6 @@
         "Address"
       ]
     },
-    "/home/san/TFM/contracts/FlashBotsUniswapQuery.sol": {
-      "lastModificationDate": 1716219636935,
-      "contentHash": "b734f88bfb91b74d585de6ad939e42cc",
-      "sourceName": "contracts/FlashBotsUniswapQuery.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "FlashBotsUniswapQuery",
-        "IUniswapV2Pair",
-        "UniswapV2Factory"
-      ]
-    },
     "/home/san/TFM/node_modules/@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol": {
       "lastModificationDate": 1710635343970,
       "contentHash": "fe8b4279fc6b913c2b33c72db1ed3eb1",
@@ -2049,6 +1972,494 @@
       ],
       "artifacts": [
         "console"
+      ]
+    },
+    "/home/san/TFM/contracts/SwapContractUniV3.sol": {
+      "lastModificationDate": 1717257137611,
+      "contentHash": "b783f7342edf47b7f01248f7ea1f7282",
+      "sourceName": "contracts/SwapContractUniV3.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
+        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SwapContractUniV3"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-periphery/contracts/interfaces/IERC20.sol": {
+      "lastModificationDate": 1712004275325,
+      "contentHash": "3d2b948a9266ee66b6e739de97c7e6e9",
+      "sourceName": "@uniswap/v2-periphery/contracts/interfaces/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol": {
+      "lastModificationDate": 1712004275325,
+      "contentHash": "3fd36426274a5b35f7e702f87ba08a8e",
+      "sourceName": "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IUniswapV2Router01.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IUniswapV2Router02"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol": {
+      "lastModificationDate": 1712004275325,
+      "contentHash": "95d8729b2c698dc663322167b3c085fe",
+      "sourceName": "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IUniswapV2Router01"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-periphery/contracts/interfaces/IWETH.sol": {
+      "lastModificationDate": 1712004275325,
+      "contentHash": "270f2c1a1f22475259d5a2f6a524f72e",
+      "sourceName": "@uniswap/v2-periphery/contracts/interfaces/IWETH.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IWETH"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol": {
+      "lastModificationDate": 1710635343860,
+      "contentHash": "3fa31c3860f2b9585c3a98c64850829e",
+      "sourceName": "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IUniswapV2Pair"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol": {
+      "lastModificationDate": 1710635343860,
+      "contentHash": "ec39b5372f4f4d52101b4da561e2aee6",
+      "sourceName": "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IUniswapV2Factory"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/lib/contracts/libraries/TransferHelper.sol": {
+      "lastModificationDate": 1710635343850,
+      "contentHash": "7fad4038612c5f040ebd746a3e58e0db",
+      "sourceName": "@uniswap/lib/contracts/libraries/TransferHelper.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.0"
+      ],
+      "artifacts": [
+        "TransferHelper"
+      ]
+    },
+    "/home/san/TFM/contracts/SwapContractUniV2.sol": {
+      "lastModificationDate": 1717257114851,
+      "contentHash": "a813137af7a44133aa5246397e7ad2d3",
+      "sourceName": "contracts/SwapContractUniV2.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@uniswap/v2-periphery/contracts/UniswapV2Router02.sol",
+        "@uniswap/v2-periphery/contracts/interfaces/IERC20.sol",
+        "hardhat/console.sol",
+        "@uniswap/lib/contracts/libraries/TransferHelper.sol"
+      ],
+      "versionPragmas": [
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "SwapContractUniV2"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-periphery/contracts/UniswapV2Router02.sol": {
+      "lastModificationDate": 1712004275325,
+      "contentHash": "12a8c57909541a65738ecced73a40885",
+      "sourceName": "@uniswap/v2-periphery/contracts/UniswapV2Router02.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol",
+        "@uniswap/lib/contracts/libraries/TransferHelper.sol",
+        "./interfaces/IUniswapV2Router02.sol",
+        "./libraries/UniswapV2Library.sol",
+        "./libraries/SafeMath.sol",
+        "./interfaces/IERC20.sol",
+        "./interfaces/IWETH.sol"
+      ],
+      "versionPragmas": [
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "UniswapV2Router02"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol": {
+      "lastModificationDate": 1712004275325,
+      "contentHash": "b545c97573c8aa5876a4f9e25f28a732",
+      "sourceName": "@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol",
+        "./SafeMath.sol"
+      ],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "UniswapV2Library"
+      ]
+    },
+    "/home/san/TFM/node_modules/@uniswap/v2-periphery/contracts/libraries/SafeMath.sol": {
+      "lastModificationDate": 1712004275325,
+      "contentHash": "9f77127a0e2c55c2058453327e84bde3",
+      "sourceName": "@uniswap/v2-periphery/contracts/libraries/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "SafeMath"
+      ]
+    },
+    "/home/san/TFM/contracts/FlashBotsUniswapQuery.sol": {
+      "lastModificationDate": 1717256422941,
+      "contentHash": "b734f88bfb91b74d585de6ad939e42cc",
+      "sourceName": "contracts/FlashBotsUniswapQuery.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "FlashBotsUniswapQuery",
+        "IUniswapV2Pair",
+        "UniswapV2Factory"
       ]
     }
   }

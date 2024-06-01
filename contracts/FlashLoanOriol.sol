@@ -6,7 +6,7 @@ import {FlashLoanSimpleReceiverBase} from "@aave/core-v3/contracts/flashloan/bas
 import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
 import {IERC20} from "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
-import {SwapContract} from "./SwapContract.sol";
+import {SwapContractUniV3} from "./SwapContractUniV3.sol";
 
 
 contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
@@ -20,7 +20,7 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
     }
 
     requestFlashLoanArbitrageSimpleParams public storedParams;
-    SwapContract private swapContract;
+    SwapContractUniV3 private swapContract;
 
     // events
     event FlashLoanReceived(address indexed asset, uint256 amount, uint256 premium, address indexed initiator);
@@ -30,7 +30,7 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
         FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) // Initialize the parent contract with the address provider
     {
         owner = payable(msg.sender); // make the deployer of the contract the owner
-        swapContract = SwapContract(_addressSwapContract);
+        swapContract = SwapContractUniV3(_addressSwapContract);
     }
 
     /**

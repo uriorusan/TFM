@@ -1,20 +1,25 @@
-import { SimpleFlashLoanContractManager } from './simpleFlashLoan';
-import { SwapContractManager } from './swapContract';
-import { executeSwapUniswapV3 } from './swapOnUniswapV3';
+import { SimpleFlashLoanContractManager } from './flashLoans/simpleFlashLoan';
+import { SwapContractV3Manager, SwapContractV2Manager } from './swapContract';
+import { executeSwapUniswapV3, executeSwapUniswapV2 } from './uniswap/swapOnUniswap';
 import { UniswapV2PoolContractManager } from './uniswap/UniswapV2PoolContractManager';
 import { UniswapV3PoolContractManager } from './uniswap/UniswapV3PoolContractManager';
 import { UniswapV3FactoryContractManager } from './uniswap/UniswapV3FactoryContractManager';
-import { FlashLoanOriolContractManager, FlashLoanOriolMultipleContractManager } from './flashLoanOriol';
+import { FlashLoanOriolContractManager, FlashLoanOriolMultipleContractManager } from './flashLoans/flashLoanOriol';
 import { ethers } from "hardhat";
 
 async function main() {
   let wallet = await (await ethers.provider.getSigner()).getAddress();
 
-  // Swap contract: allows to swap 1 WETH for LINK in Uniswap
-  let swapContract = new SwapContractManager();
+  // Swap contract: allows to swap 1 WETH for LINK in Uniswap V3
+  let swapContract = new SwapContractV3Manager();
   await swapContract.initialize();
-  await swapContract.fundWithWrappedEth("1", wallet);
-  await swapContract.executeOnUni();
+  await swapContract.fundWithWrappedEth("10", wallet);
+  await swapContract.testOnUni();
+
+  // Swap contract: allows to swap 1 WETH for LINK in Uniswap V2
+  let swapContractV2 = new SwapContractV2Manager();
+  await swapContractV2.initialize();
+  await swapContractV2.test();
 
   // SimpleFlashLoan contract: does a flash loan of 1 WETH and immidiately repays it
   let simpleFlashLoan = new SimpleFlashLoanContractManager();
@@ -26,7 +31,7 @@ async function main() {
   let flashLoanSingle = new FlashLoanOriolContractManager(swapContract.address);
   await flashLoanSingle.initialize();
   await flashLoanSingle.fundWithWrappedEth("1");
-  await flashLoanSingle.execute();
+  await flashLoanSingle.test();
 
   // Get prices from Uniswap V2 (WETH/USDC)
   let pairAddressV2 = "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852"; // WETH/USDC
@@ -60,7 +65,8 @@ async function main() {
   let flashLoanMultiple = new FlashLoanOriolMultipleContractManager(swapContract.address);
   await flashLoanMultiple.initialize();
   await flashLoanMultiple.fundWithWrappedEth("1");
-  await flashLoanMultiple.execute();
+  await flashLoanMultiple.test();
+
 }
 
 // Run main and do not exit

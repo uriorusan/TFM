@@ -1,7 +1,7 @@
 
 import { Web3 } from 'web3';
 import { getTokensBalance } from '@mycrypto/eth-scan';
-import ERC20 from '../../abis/ERC20';
+import ERC20 from '../../artifacts/@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol/IERC20.json';
 
 import fs from 'fs';
 
@@ -81,7 +81,7 @@ main().catch(console.error).finally(() => process.exit(0));
 
 
 // Custom replacer function to convert BigInt to strings
-const replacer = (key: any, value: any) => 
+const replacer = (key: any, value: any) =>
     typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String
 
 

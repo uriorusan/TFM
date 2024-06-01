@@ -1,6 +1,6 @@
 
 import { FACTORY_ADDRESS } from '@uniswap/v3-sdk';
-import { ContractManager } from '../ContractManager';
+import { ContractManager } from '../lib/ContractManager';
 import { ethers } from 'hardhat'
 import { IQuoter, IUniswapV3Pool, IERC20Metadata } from '../../typechain-types';
 
