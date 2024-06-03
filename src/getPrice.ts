@@ -19,7 +19,7 @@ async function main() {
         blockNumbers.push(lastBlock - interval * i);
     }
 
-    let goodTestingBlocks = [19995279, 19992279, 19987279, 19992334, 19959350 ] // found with trial and error
+    let goodTestingBlocks = [19995279, 19992279, 19987279, 19992334, 19959350] // found with trial and error
 
     // Loop through the block numbers
     for (const blockNumber of blockNumbers) {

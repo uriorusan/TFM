@@ -18,7 +18,8 @@ export class UniswapV3PoolContractManager extends ContractManager<IUniswapV3Pool
         super("IUniswapV3Pool", address);
     }
 
-    async extraInitalize() {
+    async initialize() {
+        await super.initialize();
         this.token0Address = await this.contract.token0();
         this.token1Address = await this.contract.token1();
 
@@ -26,7 +27,6 @@ export class UniswapV3PoolContractManager extends ContractManager<IUniswapV3Pool
         this.token1 = await this.getErc20Token(this.token1Address);
 
         this.reserves = await this.contract.liquidity();
-
     }
 
     async getPrice() {
@@ -43,7 +43,7 @@ export class UniswapV3PoolContractManager extends ContractManager<IUniswapV3Pool
         let slot0 = await this.contract.slot0();
         let sqrtPriceX96 = Number(slot0.sqrtPriceX96);
 
-        let sqrtPrice = sqrtPriceX96 / 2**96
+        let sqrtPrice = sqrtPriceX96 / 2 ** 96
 
         let price = sqrtPrice * sqrtPrice;
 
@@ -59,8 +59,6 @@ export class UniswapV3PoolContractManager extends ContractManager<IUniswapV3Pool
     }
 
     async getWrappedEthPrice(): Promise<string> {
-        const token0Name = await this.token0.name();
-        const token1Name = await this.token1.name();
 
         const token0Symbol = await this.token0.symbol();
         const token1Symbol = await this.token1.symbol();
@@ -71,7 +69,7 @@ export class UniswapV3PoolContractManager extends ContractManager<IUniswapV3Pool
         let slot0 = await this.contract.slot0();
         let sqrtPriceX96 = Number(slot0.sqrtPriceX96);
 
-        let sqrtPrice = sqrtPriceX96 / 2**96
+        let sqrtPrice = sqrtPriceX96 / 2 ** 96
 
         let price = sqrtPrice * sqrtPrice;
 

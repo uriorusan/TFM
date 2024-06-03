@@ -5,7 +5,7 @@ import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
 import { ContractManager } from "../lib/ContractManager";
 
 export class FlashLoanOriolContractManager extends ContractManager<FlashLoanOriol> {
-    constructor (swapContractAddress: string, address?: string) {
+    constructor(swapContractAddress: string, address?: string) {
         super("FlashLoanOriol", address, [AaveV3Ethereum.POOL_ADDRESSES_PROVIDER, swapContractAddress]);
     }
 
@@ -19,10 +19,10 @@ export class FlashLoanOriolContractManager extends ContractManager<FlashLoanOrio
         const amountToFlashLoan = ethers.parseEther("1");
 
         let input = {
-                amount: amountToFlashLoan,
-                tokens: tokens,
-                swapRouters: swapRouterAddresses,
-                poolFees: poolFees
+            amount: amountToFlashLoan,
+            tokens: tokens,
+            swapRouters: swapRouterAddresses,
+            poolFees: poolFees
         } as FlashLoanOriol.RequestFlashLoanArbitrageSimpleParamsStruct;
 
         let wEthBefore = await this.getWEthBalance(this.wallet);
@@ -32,8 +32,6 @@ export class FlashLoanOriolContractManager extends ContractManager<FlashLoanOrio
         let tx = await this.contract.requestFlashLoanArbitrageSimple(input);
         await tx.wait(); // Wait for the transaction to be mined
 
-        console.log(`FlashLoan transaction completed: ${JSON.stringify(await tx.getTransaction(), this.replacer, 4)}`);
-
         let wEthAfter = await this.getWEthBalance(this.wallet);
         console.log(`WETH Amount Before FlashLoan: ${wEthBefore} (wallet), ${wEthBeforeContract} (contract), WETH Amount After FlashLoan: ${wEthAfter}.`);
         let result = wEthAfter - (wEthBefore + wEthBeforeContract);
@@ -42,7 +40,7 @@ export class FlashLoanOriolContractManager extends ContractManager<FlashLoanOrio
 }
 
 export class FlashLoanOriolMultipleContractManager extends ContractManager<FlashLoanOriolMultiple> {
-    constructor (swapContractAddress: string, address?: string) {
+    constructor(swapContractAddress: string, address?: string) {
         super("FlashLoanOriolMultiple", address, [AaveV3Ethereum.POOL_ADDRESSES_PROVIDER, swapContractAddress]);
     }
 

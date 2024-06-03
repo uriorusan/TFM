@@ -12,13 +12,14 @@ export class UniswapV2PoolContractManager extends ContractManager<IUniswapV2Pair
     token0Address: string = "";
     token1Address: string = "";
     zero = ethers.getBigInt(0);
-    reserves = [this.zero,this.zero,this.zero];
+    reserves = [this.zero, this.zero, this.zero];
 
     constructor(address?: string) {
         super("@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol:IUniswapV2Pair", address);
     }
 
-    async extraInitalize() {
+    async initialize() {
+        await super.initialize();
         this.token0Address = await this.contract.token0();
         this.token1Address = await this.contract.token1();
 
@@ -26,7 +27,6 @@ export class UniswapV2PoolContractManager extends ContractManager<IUniswapV2Pair
         this.token1 = await this.getErc20Token(this.token1Address);
 
         this.reserves = await this.contract.getReserves();
-
     }
 
     async getPrice() {
@@ -83,7 +83,7 @@ export class UniswapV2PoolContractManager extends ContractManager<IUniswapV2Pair
 
         if (token0Symbol === "WETH") {
             return price1_in_terms_of_0;
-        } else if (token1Symbol === "WETH"){
+        } else if (token1Symbol === "WETH") {
             return price0_in_terms_of_1;
         } else {
             console.log("Neither token is WETH");

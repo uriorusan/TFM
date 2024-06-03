@@ -18,10 +18,10 @@ const PoolAbi = Pool.abi;
 // Main function to execute the script
 async function main() {
 
-  const poolAddressesProviderContract = new web3.eth.Contract(PoolAddressesProviderABI, PoolAddressesProviderAddress);
+    const poolAddressesProviderContract = new web3.eth.Contract(PoolAddressesProviderABI, PoolAddressesProviderAddress);
 
-  const poolContractAddress: string = await poolAddressesProviderContract.methods.getPool().call();
-  console.log(`Pool Address: ${JSON.stringify(poolContractAddress)}`);
+    const poolContractAddress: string = await poolAddressesProviderContract.methods.getPool().call();
+    console.log(`Pool Address: ${JSON.stringify(poolContractAddress)}`);
 
     if (!poolContractAddress) {
         throw new Error('Pool Address not found');

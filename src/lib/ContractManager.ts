@@ -36,7 +36,6 @@ export abstract class ContractManager<T> implements IContractManager<T> {
         this.contract = await ethers.getContractAt(this.contractName, this.address, this.signer) as T;
         this.Link = await ethers.getContractAt('IERC20Metadata', AaveV3Ethereum.ASSETS.LINK.UNDERLYING, this.signer);
         this.wEth = await ethers.getContractAt('IERC20Metadata', AaveV3Ethereum.ASSETS.WETH.UNDERLYING, this.signer);
-        await this.extraInitalize?.();
     }
 
     private async deploy(): Promise<string> {
@@ -58,18 +57,18 @@ export abstract class ContractManager<T> implements IContractManager<T> {
 
     // If you don't provide an address, it uses the contract address
     async getWEthBalance(address?: string) {
-        let wEthDecimals = ethers.getBigInt(10)**ethers.getBigInt(18);
+        let wEthDecimals = ethers.getBigInt(10) ** ethers.getBigInt(18);
         let balanceWETH = Number(await this.wEth.balanceOf(address || this.address)) / Number(wEthDecimals);
         return balanceWETH;
     }
 
-    async fundWithEth(amount: string){
+    async fundWithEth(amount: string) {
         let amountWei = ethers.parseEther(amount);
         console.log(`Sending ${amount} ETH from ${this.signer.address} to ${this.address}`);
 
         const tx = await this.signer.sendTransaction({
-          to: this.address,
-          value: amountWei
+            to: this.address,
+            value: amountWei
         });
 
         await tx.wait();
@@ -105,8 +104,6 @@ export abstract class ContractManager<T> implements IContractManager<T> {
     getErc20Token = async (address: string) => {
         return await ethers.getContractAt('IERC20Metadata', address, this.signer);
     }
-
-    async extraInitalize?(): Promise<void>;
 
     replacer = (key: any, value: any) =>
         typeof value === 'bigint' ? value.toString() : value; // Convert BigInt to String

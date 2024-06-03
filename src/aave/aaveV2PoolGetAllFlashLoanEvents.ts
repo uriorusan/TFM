@@ -7,11 +7,11 @@ import { AaveV2Ethereum } from '@bgd-labs/aave-address-book';
 // Main function to execute the script
 async function main() {
 
-  const poolAddressesProviderContract = await ethers.getContractAt('ILendingPoolAddressesProvider', AaveV2Ethereum.POOL_ADDRESSES_PROVIDER);
+    const poolAddressesProviderContract = await ethers.getContractAt('ILendingPoolAddressesProvider', AaveV2Ethereum.POOL_ADDRESSES_PROVIDER);
 
-  const lendingPoolContractAddress: string = await poolAddressesProviderContract.getLendingPool();
+    const lendingPoolContractAddress: string = await poolAddressesProviderContract.getLendingPool();
 
-  console.log(`Lending Pool Address: ${JSON.stringify(lendingPoolContractAddress)}`);
+    console.log(`Lending Pool Address: ${JSON.stringify(lendingPoolContractAddress)}`);
 
     if (!lendingPoolContractAddress) {
         throw new Error('Pool Address not found');
