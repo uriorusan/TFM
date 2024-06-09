@@ -18,7 +18,7 @@ async function main() {
     await swapContract.fundWithWrappedEth("10", wallet);
     await swapContract.test();
 
-    // Swap contract: allows to swap 1 WETH for LINK in Uniswap V2
+    // Swap contract: allows to swap 1 WETH for LINK in Uniswap V2 (Section 4.1)
     let swapContractV2 = new SwapContractV2Manager();
     await swapContractV2.initialize();
     await swapContractV2.test();
@@ -26,7 +26,7 @@ async function main() {
     // Swap 1 WETH -> LINK in Uniswap V3 (Section 4.2)
     await executeSwapUniswapV3();
 
-    // Swap 1 WETH -> LINK in Uniswap V2 (Section 4.4)
+    // Swap 1 WETH -> LINK in Uniswap V2 (Section 4.2)
     await executeSwapUniswapV2();
 
     // SimpleFlashLoan contract: does a flash loan of 1 WETH and immidiately repays it
@@ -41,14 +41,14 @@ async function main() {
     await flashLoanSingle.fundWithWrappedEth("1");
     await flashLoanSingle.test();
 
-    // Get prices from Uniswap V2, pair WETH/USDC (Section 4.3)
+    // Get prices from Uniswap V2, pair WETH/USDC (Section 4.1)
     let pairAddressV2 = "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852"; // WETH/USDC
     let uniswapV2Pool = new UniswapV2PoolContractManager(pairAddressV2);
     await uniswapV2Pool.initialize();
     let price = await uniswapV2Pool.getWrappedEthPrice();
     console.log(`Price of 1 WETH in USDC in UniV2: ${price}`);
 
-    // Get prices from Uniswap V3, pair USDC/WETH, (Section 4.1)
+    // Get prices from Uniswap V3, pair USDC/WETH. (Section 4.1)
     let factory = new UniswapV3FactoryContractManager();
     let usdcWethPair = await factory.getUsdcWethPool();
     let uniswapV3Pool = new UniswapV3PoolContractManager(usdcWethPair);
@@ -56,14 +56,14 @@ async function main() {
     price = await uniswapV3Pool.getWrappedEthPrice();
     console.log(`Price of 1 WETH in USDC in UniV3: ${price}`);
 
-    // Get prices from Uniswap V3 (DAI/WETH)
+    // Get prices from Uniswap V3, pair DAI/WETH. (Section 4.1)
     let daiWethPair = await factory.getDaiWethPool();
     let uniswapV3Pool2 = new UniswapV3PoolContractManager(daiWethPair);
     await uniswapV3Pool2.initialize();
     price = await uniswapV3Pool2.getWrappedEthPrice();
     console.log(`Price of 1 WETH in DAI in UniV3: ${price}`);
 
-    // Get prices from Uniswap V3, pair DAI/USDC (Section 4.1)
+    // Get prices from Uniswap V3, pair DAI/USDC. (Section 4.1)
     let daiUsdtPair = await factory.getDaiUsdcPool();
     let uniswapV3Pool3 = new UniswapV3PoolContractManager(daiUsdtPair);
     await uniswapV3Pool3.initialize();
@@ -79,4 +79,3 @@ async function main() {
 
 // Run main and do not exit
 main().catch(console.error);
-

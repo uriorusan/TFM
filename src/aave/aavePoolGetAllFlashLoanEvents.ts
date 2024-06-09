@@ -4,8 +4,7 @@ import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
 import fs from 'fs';
 import path from 'path';
 
-export default async function main() {
-
+export default async function aavePoolGetAllFlashLoanEvents() {
     // Define the AAVE V3 Address Provider contract address
     const PoolAddressesProviderAddress = AaveV3Ethereum.POOL_ADDRESSES_PROVIDER;
 
@@ -31,7 +30,7 @@ export default async function main() {
 }
 
 // Run Main function
-main().catch(console.error).finally(() => process.exit(0));
+aavePoolGetAllFlashLoanEvents().catch(console.error).finally(() => process.exit(0));
 
 
 // Custom replacer function to convert BigInt to strings

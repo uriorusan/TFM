@@ -9,8 +9,10 @@ import {IERC20} from "@aave/core-v3/contracts/dependencies/openzeppelin/contract
 contract FlashLoanV3 is FlashLoanSimpleReceiverBase {
     address payable owner;
 
-    constructor(address _addressProvider)
-        FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) // 
+    constructor(
+        address _addressProvider
+    )
+        FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) //
     {
         owner = payable(msg.sender); // make the deployer of the contract the owner
     }
@@ -25,6 +27,8 @@ contract FlashLoanV3 is FlashLoanSimpleReceiverBase {
         address initiator, // initiator of the loan, mostly irrelevant
         bytes calldata params // other params
     ) external override returns (bool) {
+        params; // stop alerts
+        initiator; // stop alerts
         //
         // This contract now has the funds requested.
         // Your logic goes here.

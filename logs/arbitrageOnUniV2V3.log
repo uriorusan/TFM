@@ -1,0 +1,77 @@
+
+Testing at block number: 20049536, dated at Sat Jun 08 2024 22:36:11 GMT+0200 (Central European Summer Time)
+Price in UniV2: 3674.7946589446587, Price in UniV3: 3683.129606328278
+Price in UniV3 is higher than in UniV2 by $8.334947383619237
+contracts/SwapContractUniV3.sol:SwapContractUniV3 deployed to: 0x6431AF84d34F0522cAA58b221d94A150B5AdAC69
+contracts/SwapContractUniV2.sol:SwapContractUniV2 deployed to: 0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72
+Sent 10 weth to 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Selling in V3: 100000000000000000 WETH for USDC.
+Received: 367291676 USDC
+Amount out: 9999418748954696325 WETH
+Arbitrage completed. Loss: -0.0005812510453040431 WETH
+
+Testing at block number: 20049203, dated at Sat Jun 08 2024 21:29:35 GMT+0200 (Central European Summer Time)
+Price in UniV2: 3696.076347208777, Price in UniV3: 3683.7864083918
+Price in UniV2 is higher than in UniV3 by $12.289938816977156
+contracts/SwapContractUniV3.sol:SwapContractUniV3 deployed to: 0x6431AF84d34F0522cAA58b221d94A150B5AdAC69
+contracts/SwapContractUniV2.sol:SwapContractUniV2 deployed to: 0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72
+Sent 10 weth to 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Selling in V2: 100000000000000000 WETH for USDC.
+Amount out: 367705180 USDC
+Amount out: 9999635510073519418 WETH
+Arbitrage completed. Loss: -0.00036448992647919454 WETH
+
+Testing at block number: 20049166, dated at Sat Jun 08 2024 21:22:11 GMT+0200 (Central European Summer Time)
+Price in UniV2: 3695.5770521424884, Price in UniV3: 3683.7864083918
+Price in UniV2 is higher than in UniV3 by $11.79064375068856
+contracts/SwapContractUniV3.sol:SwapContractUniV3 deployed to: 0x6431AF84d34F0522cAA58b221d94A150B5AdAC69
+contracts/SwapContractUniV2.sol:SwapContractUniV2 deployed to: 0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72
+Sent 10 weth to 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Selling in V2: 100000000000000000 WETH for USDC.
+Amount out: 367698338 USDC
+Amount out: 9999633078123452571 WETH
+Arbitrage completed. Loss: -0.0003669218765480764 WETH
+
+Testing at block number: 20049129, dated at Sat Jun 08 2024 21:14:47 GMT+0200 (Central European Summer Time)
+Price in UniV2: 3693.064963550739, Price in UniV3: 3683.7864083918
+Price in UniV2 is higher than in UniV3 by $9.27855515893907
+contracts/SwapContractUniV3.sol:SwapContractUniV3 deployed to: 0x6431AF84d34F0522cAA58b221d94A150B5AdAC69
+contracts/SwapContractUniV2.sol:SwapContractUniV2 deployed to: 0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72
+Sent 10 weth to 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Selling in V2: 100000000000000000 WETH for USDC.
+Amount out: 367698481 USDC
+Amount out: 9999571957641352249 WETH
+Arbitrage completed. Loss: -0.00042804235864757345 WETH
+
+Testing at block number: 20048833, dated at Sat Jun 08 2024 20:15:11 GMT+0200 (Central European Summer Time)
+Price in UniV2: 3697.7581176166805, Price in UniV3: 3683.711890528804
+Price in UniV2 is higher than in UniV3 by $14.04622708787656
+contracts/SwapContractUniV3.sol:SwapContractUniV3 deployed to: 0x6431AF84d34F0522cAA58b221d94A150B5AdAC69
+contracts/SwapContractUniV2.sol:SwapContractUniV2 deployed to: 0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72
+Sent 10 weth to 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Selling in V2: 100000000000000000 WETH for USDC.
+Amount out: 368123211 USDC
+Amount out: 9999670806088746646 WETH
+Arbitrage completed. Loss: -0.0003291939112521902 WETH
+
+Testing at block number: 20048796, dated at Sat Jun 08 2024 20:07:47 GMT+0200 (Central European Summer Time)
+Price in UniV2: 3693.1594735823496, Price in UniV3: 3683.812688604647
+Price in UniV2 is higher than in UniV3 by $9.346784977702555
+contracts/SwapContractUniV3.sol:SwapContractUniV3 deployed to: 0x6431AF84d34F0522cAA58b221d94A150B5AdAC69
+contracts/SwapContractUniV2.sol:SwapContractUniV2 deployed to: 0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72
+Sent 10 weth to 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Selling in V2: 100000000000000000 WETH for USDC.
+Amount out: 368019057 USDC
+Amount out: 9999712063513048220 WETH
+Arbitrage completed. Loss: -0.00028793648695035756 WETH
+
+Testing at block number: 20048759, dated at Sat Jun 08 2024 20:00:23 GMT+0200 (Central European Summer Time)
+Price in UniV2: 3693.454129032258, Price in UniV3: 3683.812688604647
+Price in UniV2 is higher than in UniV3 by $9.641440427611087
+contracts/SwapContractUniV3.sol:SwapContractUniV3 deployed to: 0x6431AF84d34F0522cAA58b221d94A150B5AdAC69
+contracts/SwapContractUniV2.sol:SwapContractUniV2 deployed to: 0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72
+Sent 10 weth to 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Selling in V2: 100000000000000000 WETH for USDC.
+Amount out: 367855656 USDC
+Amount out: 9999778158049457483 WETH
+Arbitrage completed. Loss: -0.00022184195054109068 WETH

@@ -765,8 +765,8 @@
       ]
     },
     "/home/san/TFM/contracts/FlashLoanV3.sol": {
-      "lastModificationDate": 1715548634306,
-      "contentHash": "df203912e18c93898ba0c885f715c5a6",
+      "lastModificationDate": 1717858088258,
+      "contentHash": "9d730f781a78d6056e54e8ef5dee0f70",
       "sourceName": "contracts/FlashLoanV3.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -1194,8 +1194,8 @@
       ]
     },
     "/home/san/TFM/contracts/FlashLoanOriol.sol": {
-      "lastModificationDate": 1717242827255,
-      "contentHash": "831e7ffddbb00a73ef20766b2d9a6049",
+      "lastModificationDate": 1717528630487,
+      "contentHash": "d186213adfc9af9aa6b5be03c3d24c68",
       "sourceName": "contracts/FlashLoanOriol.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -1236,8 +1236,8 @@
       ]
     },
     "/home/san/TFM/contracts/FlashLoanV2.sol": {
-      "lastModificationDate": 1715548678896,
-      "contentHash": "188c13289479eb6aa530db5be4225d15",
+      "lastModificationDate": 1717858102398,
+      "contentHash": "6e6794c83ad212e69884ee78f808767d",
       "sourceName": "contracts/FlashLoanV2.sol",
       "solcConfig": {
         "version": "0.6.12",
@@ -2425,13 +2425,14 @@
         "SafeMath"
       ]
     },
-    "/home/san/TFM/contracts/FlashBotsUniswapQuery.sol": {
-      "lastModificationDate": 1717256422941,
-      "contentHash": "b734f88bfb91b74d585de6ad939e42cc",
-      "sourceName": "contracts/FlashBotsUniswapQuery.sol",
+    "/home/san/TFM/contracts/FlashLoanArbitrage.sol": {
+      "lastModificationDate": 1717923881158,
+      "contentHash": "320630d97ed1221e01a5abb338801de3",
+      "sourceName": "contracts/FlashLoanArbitrage.sol",
       "solcConfig": {
-        "version": "0.6.12",
+        "version": "0.8.20",
         "settings": {
+          "evmVersion": "paris",
           "optimizer": {
             "enabled": false,
             "runs": 200
@@ -2452,14 +2453,20 @@
           }
         }
       },
-      "imports": [],
+      "imports": [
+        "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol",
+        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
+        "@uniswap/lib/contracts/libraries/TransferHelper.sol",
+        "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol",
+        "hardhat/console.sol"
+      ],
       "versionPragmas": [
-        "0.6.12"
+        "^0.8.10"
       ],
       "artifacts": [
-        "FlashBotsUniswapQuery",
-        "IUniswapV2Pair",
-        "UniswapV2Factory"
+        "FlashLoanArbitrage",
+        "ISwapContractUniV2",
+        "ISwapContractUniV3"
       ]
     }
   }

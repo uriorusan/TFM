@@ -3,7 +3,7 @@ import { SwapContractV3Manager, SwapContractV2Manager } from './swapContract';
 import { ethers } from "hardhat";
 
 export enum TransactionDirection {
-    WrappedEth_BuyV2_SellV3 = "0",
+    WrappedEth_SellV3_BuyV2 = "0",
     WrappedEth_SellV2_BuyV3 = "1",
 }
 
@@ -14,7 +14,7 @@ export enum TransactionDirection {
  * @param amount amount to sell in WEI
  */
 export async function arbitrage(token1Address: string, direction: TransactionDirection, amount: BigNumberish) {
-    let v3PoolFee = 3000;
+    let v3PoolFee = 500; // 3000;
 
     let v3 = new SwapContractV3Manager();
     let v2 = new SwapContractV2Manager();
@@ -23,31 +23,35 @@ export async function arbitrage(token1Address: string, direction: TransactionDir
 
     await v3.fundWithWrappedEth("10", v3.wallet);
 
+    let token1Symbol = await (await v3.getErc20Token(token1Address)).symbol();
+
     let wrappedEthAddress = v3.wEthAddress; // WETH address
 
     let wrappedEthBalanceBefore = await v3.getWEthBalance(v3.wallet);
 
-    console.log(`\nArbitrage started. Wallet Adress: ${v3.wallet} Direction: ${direction}, Amount: ${amount}`);
-
     if (direction === TransactionDirection.WrappedEth_SellV2_BuyV3) {
-        console.log(`Selling in V2: ${amount} ${wrappedEthAddress} for ${token1Address}, in contract ${v2.address}`);
+        console.log(`Selling in V2: ${amount} WETH for ${token1Symbol}.`);
         let amountOut = await v2.executeTrade(amount, wrappedEthAddress, token1Address);
-        console.log(`Amount out: ${amountOut}`);
-        await v3.executeTrade(amountOut, token1Address, wrappedEthAddress, v3PoolFee);
+        console.log(`Amount out: ${amountOut} ${token1Symbol}`);
+        amountOut = await v3.executeTrade(amountOut, token1Address, wrappedEthAddress, v3PoolFee);
+        console.log(`Amount out: ${amountOut} WETH`);
     }
-    else if (direction === TransactionDirection.WrappedEth_BuyV2_SellV3) {
-        console.log(`Selling in V3: ${amount} ${wrappedEthAddress} for ${token1Address}, , in contract ${v3.address}`);
+    else if (direction === TransactionDirection.WrappedEth_SellV3_BuyV2) {
+        console.log(`Selling in V3: ${amount} WETH for ${token1Symbol}.`);
         let amountOut = await v3.executeTrade(amount, wrappedEthAddress, token1Address, v3PoolFee);
-        console.log(`Amount out: ${amountOut}`);
-        await v2.executeTrade(amountOut, token1Address, wrappedEthAddress);
+        console.log(`Received: ${amountOut} ${token1Symbol}`);
+        amountOut = await v2.executeTrade(amountOut, token1Address, wrappedEthAddress);
+        console.log(`Amount out: ${amountOut} WETH`);
     }
 
     let wrappedEthBalanceAfter = await v3.getWEthBalance(v3.wallet);
 
     let profit = wrappedEthBalanceAfter - wrappedEthBalanceBefore;
 
-    console.log(`Arbitrage completed. Profit: ${profit}`);
+    console.log(`Arbitrage completed. ${profit > 0 ? "Profit!" : "Loss"}: ${profit} WETH`);
 }
 
 
-
+async function calculateAmount(): Promise<BigNumberish> {
+    return ethers.parseEther("0.1");
+}

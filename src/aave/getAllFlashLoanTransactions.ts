@@ -36,11 +36,11 @@ let most_borrowed_assets_names: Record<string, string> = {
     "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0": "LUSD",
 } as const;
 
-async function main() {
-    const allTransactions = JSON.parse(fs.readFileSync('./logs/flash_loans_mainnet.log', 'utf8')) as FlashLoanEvent[];
+async function getAllFlashLoanTransactions() {
+    const allFlashLoanEvents = JSON.parse(fs.readFileSync('./logs/flash_loans_mainnet.log', 'utf8')) as FlashLoanEvent[];
     let count = 0;
 
-    for (let transaction of allTransactions) {
+    for (let transaction of allFlashLoanEvents) {
         count++;
         if (most_borrowed_assets.includes(transaction.returnValues.asset)) {
             const transactionReceipt = await web3.eth.getTransactionReceipt(transaction.transactionHash);
@@ -57,14 +57,12 @@ async function main() {
 
                 // Profit calculation here should also subtract any fees or interest paid
                 const decimals = await erc20Contract.methods.decimals().call();
-                const profit = (Number(balanceAfter) - Number(balanceBefore)) * 10 ** (-1 * Number(decimals)); // Ensure this calculation accounts for fees
+                const profit = (Number(balanceAfter) - Number(balanceBefore)) * 10 ** (-1 * Number(decimals));
 
                 if (profit > 0) {
                     console.log(`Profit for ${wallet} in transaction ${transaction.transactionHash}: ${profit} ${assetName}`);
                     console.log(`Transaction Receipt: ${JSON.stringify(transactionReceipt, replacer, 4)}`)
                 }
-
-
 
             } catch (error) {
                 console.error(`Error processing transaction ${transaction.transactionHash}:`, error);
@@ -77,7 +75,7 @@ async function main() {
     }
 }
 
-main().catch(console.error).finally(() => process.exit(0));
+getAllFlashLoanTransactions().catch(console.error).finally(() => process.exit(0));
 
 
 // Custom replacer function to convert BigInt to strings

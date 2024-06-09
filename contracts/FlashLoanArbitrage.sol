@@ -4,45 +4,60 @@ pragma solidity ^0.8.10;
 
 import {FlashLoanSimpleReceiverBase} from "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol";
 import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
+import "@uniswap/lib/contracts/libraries/TransferHelper.sol";
 import {IERC20} from "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol";
-import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
-import {SwapContractUniV3} from "./SwapContractUniV3.sol";
+import "hardhat/console.sol";
 
-contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
+interface ISwapContractUniV3 {
+    function swapSingle(
+        address _from,
+        address _to,
+        address _router,
+        uint256 _amount,
+        uint24 _poolFee
+    ) external returns (uint256);
+}
+
+interface ISwapContractUniV2 {
+    function swapSingle(
+        address _from,
+        address _to,
+        address _router,
+        uint256 _amount
+    ) external returns (uint256);
+}
+
+contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
     address payable owner;
+    ISwapContractUniV3 swapContractV3;
+    ISwapContractUniV2 swapContractV2;
+
+    enum SwapDirection {
+        V2ThenV3,
+        V3ThenV2
+    }
 
     struct requestFlashLoanArbitrageSimpleParams {
         uint256 amount;
         address[] tokens;
         address[] swapRouters;
         uint24[] poolFees;
+        SwapDirection direction;
     }
 
     requestFlashLoanArbitrageSimpleParams public storedParams;
-    SwapContractUniV3 private swapContract;
-
-    // events
-    event FlashLoanReceived(
-        address indexed asset,
-        uint256 amount,
-        uint256 premium,
-        address indexed initiator
-    );
-    event StoredTransactions(
-        uint256 amount,
-        address[] tokens,
-        address[] swapRouters,
-        uint24[] poolFees
-    );
+    ISwapContractUniV3 private swapContract;
 
     constructor(
         address _addressProvider,
-        address _addressSwapContract
+        address _addressSwapContractV3,
+        address _addressSwapContractV2
     )
         FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) // Initialize the parent contract with the address provider
     {
         owner = payable(msg.sender); // make the deployer of the contract the owner
-        swapContract = SwapContractUniV3(_addressSwapContract);
+        swapContractV3 = ISwapContractUniV3(_addressSwapContractV3);
+        swapContractV2 = ISwapContractUniV2(_addressSwapContractV2);
     }
 
     /**
@@ -64,39 +79,65 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
         );
         params; // to silence the warning
 
-        emit FlashLoanReceived(asset, amount, premium, initiator);
+        if (storedParams.direction == SwapDirection.V3ThenV2) {
+            TransferHelper.safeApprove(asset, address(swapContractV3), amount);
 
-        // approve the dex contract to spend the loaned amount and all other tokens
-        IERC20(storedParams.tokens[0]).approve(address(swapContract), amount);
+            uint256 amountOut = swapContractV3.swapSingle(
+                storedParams.tokens[0],
+                storedParams.tokens[1],
+                storedParams.swapRouters[0],
+                amount,
+                storedParams.poolFees[0]
+            );
 
-        uint256 amountOut = swapContract.swapSingle(
-            storedParams.tokens[0],
-            storedParams.tokens[1],
-            storedParams.swapRouters[0],
-            amount,
-            storedParams.poolFees[0]
-        );
+            TransferHelper.safeApprove(
+                storedParams.tokens[1],
+                address(swapContractV3),
+                amountOut
+            );
 
-        // approve the dex contract to spend the loaned amount and all other tokens
-        IERC20(storedParams.tokens[1]).approve(
-            address(swapContract),
-            amountOut
-        );
+            amountOut = swapContractV2.swapSingle(
+                storedParams.tokens[1],
+                storedParams.tokens[0],
+                storedParams.swapRouters[1],
+                amountOut
+            );
+        } else {
+            TransferHelper.safeApprove(
+                storedParams.tokens[0],
+                address(swapContractV2),
+                amount
+            );
 
-        swapContract.swapSingle(
-            storedParams.tokens[1],
-            storedParams.tokens[0],
-            storedParams.swapRouters[1],
-            amountOut,
-            storedParams.poolFees[1]
-        );
+            uint256 amountOut = swapContractV2.swapSingle(
+                storedParams.tokens[0],
+                storedParams.tokens[1],
+                storedParams.swapRouters[0],
+                amount
+            );
+
+            TransferHelper.safeApprove(
+                storedParams.tokens[1],
+                address(swapContractV3),
+                amountOut
+            );
+
+            amountOut = swapContractV3.swapSingle(
+                storedParams.tokens[1],
+                storedParams.tokens[0],
+                storedParams.swapRouters[1],
+                amountOut,
+                storedParams.poolFees[1]
+            );
+        }
 
         // Calculate the total amount owed including the premium
         uint256 amountOwed = amount + premium;
-        IERC20(asset).approve(address(POOL), amountOwed);
+        TransferHelper.safeApprove(address(POOL), asset, amountOwed);
 
-        IERC20(asset).transferFrom(
-            address(this),
+        // send the rest to the owner
+        TransferHelper.safeTransfer(
+            asset,
             address(owner),
             IERC20(asset).balanceOf(address(this)) - amountOwed
         );
@@ -121,13 +162,6 @@ contract FlashLoanOriol is FlashLoanSimpleReceiverBase {
 
         // Store the details for use in executeOperation
         storedParams = _params;
-
-        emit StoredTransactions(
-            storedParams.amount,
-            storedParams.tokens,
-            storedParams.swapRouters,
-            storedParams.poolFees
-        );
 
         // Initiate flash loan request
         POOL.flashLoanSimple(

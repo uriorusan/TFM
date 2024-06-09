@@ -101,12 +101,9 @@ export async function executeSwapUniswapV2() {
     console.log(`Swapping ${amountToSwap} WETH for LINK on UniV2`);
 
     let timestamp = (await ethers.provider.getBlock('latest'))?.timestamp || 0;
-    console.log(`Current timestamp: ${timestamp}`);
 
     let tx = await swapRouter.swapExactTokensForTokens(amountToSwap, 0, [WEthAddress, LinkAddress], walletAddress, ethers.getBigInt(timestamp + 100));
     await tx.wait(); // Wait for the transaction to be mined
-
-    console.log(`Swap transaction completed: ${JSON.stringify(await tx.getTransaction(), replacer, 4)}`)
 
     // Get Balances of the swapContract
     let balanceAfterWETH = Number(await WEth.balanceOf(walletAddress)) / Number(WEthDecimals)
