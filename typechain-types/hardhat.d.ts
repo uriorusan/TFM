@@ -198,14 +198,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ISwapContractUniV3__factory>;
     getContractFactory(
-      name: "SwapContractUniV2",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.SwapContractUniV2__factory>;
-    getContractFactory(
-      name: "SwapContractUniV3",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.SwapContractUniV3__factory>;
-    getContractFactory(
       name: "FlashLoanOriol",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.FlashLoanOriol__factory>;
@@ -461,16 +453,6 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.ISwapContractUniV3>;
     getContractAt(
-      name: "SwapContractUniV2",
-      address: string | ethers.Addressable,
-      signer?: ethers.Signer
-    ): Promise<Contracts.SwapContractUniV2>;
-    getContractAt(
-      name: "SwapContractUniV3",
-      address: string | ethers.Addressable,
-      signer?: ethers.Signer
-    ): Promise<Contracts.SwapContractUniV3>;
-    getContractAt(
       name: "FlashLoanOriol",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -685,14 +667,6 @@ declare module "hardhat/types/runtime" {
       name: "ISwapContractUniV3",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ISwapContractUniV3>;
-    deployContract(
-      name: "SwapContractUniV2",
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.SwapContractUniV2>;
-    deployContract(
-      name: "SwapContractUniV3",
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.SwapContractUniV3>;
     deployContract(
       name: "FlashLoanOriol",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -948,16 +922,6 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ISwapContractUniV3>;
-    deployContract(
-      name: "SwapContractUniV2",
-      args: any[],
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.SwapContractUniV2>;
-    deployContract(
-      name: "SwapContractUniV3",
-      args: any[],
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.SwapContractUniV3>;
     deployContract(
       name: "FlashLoanOriol",
       args: any[],

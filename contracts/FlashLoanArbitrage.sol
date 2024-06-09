@@ -80,7 +80,10 @@ contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
         params; // to silence the warning
 
         if (storedParams.direction == SwapDirection.V3ThenV2) {
+            console.log("Swapping V3 then V2");
             TransferHelper.safeApprove(asset, address(swapContractV3), amount);
+
+            console.log("Approved swapContractV3 to spend %s", amount);
 
             uint256 amountOut = swapContractV3.swapSingle(
                 storedParams.tokens[0],
@@ -90,11 +93,15 @@ contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
                 storedParams.poolFees[0]
             );
 
+            console.log("Received %s. Going to swap back in V2", amountOut);
+
             TransferHelper.safeApprove(
                 storedParams.tokens[1],
-                address(swapContractV3),
+                address(swapContractV2),
                 amountOut
             );
+
+            console.log("Approved swapContractV2 to spend %s", amountOut);
 
             amountOut = swapContractV2.swapSingle(
                 storedParams.tokens[1],
@@ -102,12 +109,17 @@ contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
                 storedParams.swapRouters[1],
                 amountOut
             );
+            console.log("Received %s. Paying back the loan", amountOut);
         } else {
+            console.log("Swapping V2 then V3");
+
             TransferHelper.safeApprove(
                 storedParams.tokens[0],
                 address(swapContractV2),
                 amount
             );
+
+            console.log("Approved swapContractV2 to spend %s", amount);
 
             uint256 amountOut = swapContractV2.swapSingle(
                 storedParams.tokens[0],
@@ -115,12 +127,15 @@ contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
                 storedParams.swapRouters[0],
                 amount
             );
+            console.log("Received %s. Going to swap back in V2", amountOut);
 
             TransferHelper.safeApprove(
                 storedParams.tokens[1],
                 address(swapContractV3),
                 amountOut
             );
+
+            console.log("Approved swapContractV3 to spend %s", amountOut);
 
             amountOut = swapContractV3.swapSingle(
                 storedParams.tokens[1],
@@ -129,18 +144,33 @@ contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
                 amountOut,
                 storedParams.poolFees[1]
             );
+
+            console.log("Received %s. Paying back the loan", amountOut);
         }
+
+        console.log(
+            "Finished swaps, paying back the loan and premium: %s. Current balance: %s. Token1 balance: %s",
+            amount + premium,
+            IERC20(asset).balanceOf(address(this)),
+            IERC20(storedParams.tokens[1]).balanceOf(address(this))
+        );
 
         // Calculate the total amount owed including the premium
         uint256 amountOwed = amount + premium;
-        TransferHelper.safeApprove(address(POOL), asset, amountOwed);
+        TransferHelper.safeApprove(asset, address(POOL), amountOwed);
 
-        // send the rest to the owner
-        TransferHelper.safeTransfer(
-            asset,
-            address(owner),
-            IERC20(asset).balanceOf(address(this)) - amountOwed
+        uint256 amountToOwner = IERC20(asset).balanceOf(address(this)) -
+            amountOwed;
+
+        console.log(
+            "Amount to owner: %s, owner: ",
+            amountToOwner,
+            address(owner)
         );
+
+        if (amountToOwner > 0) {
+            TransferHelper.safeTransfer(asset, address(owner), amountToOwner);
+        }
 
         return true;
     }
@@ -163,6 +193,19 @@ contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
         // Store the details for use in executeOperation
         storedParams = _params;
 
+        console.log(
+            "Storing params. amount %s, token0 %s, token1 %s",
+            storedParams.amount,
+            storedParams.tokens[0],
+            storedParams.tokens[1]
+        );
+
+        console.log(
+            "Storing params. swapRouter0 %s, swapRouter1 %s",
+            storedParams.swapRouters[0],
+            storedParams.swapRouters[1]
+        );
+
         // Initiate flash loan request
         POOL.flashLoanSimple(
             address(this),
@@ -171,6 +214,16 @@ contract FlashLoanArbitrage is FlashLoanSimpleReceiverBase {
             "",
             0
         );
+    }
+
+    function getDirectionParam(
+        bool v3First
+    ) external pure returns (SwapDirection) {
+        if (v3First == true) {
+            return SwapDirection.V3ThenV2;
+        } else {
+            return SwapDirection.V2ThenV3;
+        }
     }
 
     function getBalance(address _tokenAddress) external view returns (uint256) {

@@ -94,10 +94,6 @@ export type { ISwapContractUniV2 } from "./contracts/FlashLoanArbitrage.sol/ISwa
 export { ISwapContractUniV2__factory } from "./factories/contracts/FlashLoanArbitrage.sol/ISwapContractUniV2__factory";
 export type { ISwapContractUniV3 } from "./contracts/FlashLoanArbitrage.sol/ISwapContractUniV3";
 export { ISwapContractUniV3__factory } from "./factories/contracts/FlashLoanArbitrage.sol/ISwapContractUniV3__factory";
-export type { SwapContractUniV2 } from "./contracts/FlashLoanArbitrage.sol/SwapContractUniV2";
-export { SwapContractUniV2__factory } from "./factories/contracts/FlashLoanArbitrage.sol/SwapContractUniV2__factory";
-export type { SwapContractUniV3 } from "./contracts/FlashLoanArbitrage.sol/SwapContractUniV3";
-export { SwapContractUniV3__factory } from "./factories/contracts/FlashLoanArbitrage.sol/SwapContractUniV3__factory";
 export type { FlashLoanOriol } from "./contracts/FlashLoanOriol";
 export { FlashLoanOriol__factory } from "./factories/contracts/FlashLoanOriol__factory";
 export type { FlashLoanOriolMultiple } from "./contracts/FlashLoanOriolMultiple";
@@ -106,3 +102,7 @@ export type { FlashLoanV2 } from "./contracts/FlashLoanV2";
 export { FlashLoanV2__factory } from "./factories/contracts/FlashLoanV2__factory";
 export type { FlashLoanV3 } from "./contracts/FlashLoanV3";
 export { FlashLoanV3__factory } from "./factories/contracts/FlashLoanV3__factory";
+export type { SwapContractUniV2 } from "./contracts/SwapContractUniV2";
+export { SwapContractUniV2__factory } from "./factories/contracts/SwapContractUniV2__factory";
+export type { SwapContractUniV3 } from "./contracts/SwapContractUniV3";
+export { SwapContractUniV3__factory } from "./factories/contracts/SwapContractUniV3__factory";

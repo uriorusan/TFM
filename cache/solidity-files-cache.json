@@ -2426,8 +2426,8 @@
       ]
     },
     "/home/san/TFM/contracts/FlashLoanArbitrage.sol": {
-      "lastModificationDate": 1717923881158,
-      "contentHash": "320630d97ed1221e01a5abb338801de3",
+      "lastModificationDate": 1717931752156,
+      "contentHash": "8f628a9412df5555b470772d69b6a74e",
       "sourceName": "contracts/FlashLoanArbitrage.sol",
       "solcConfig": {
         "version": "0.8.20",

@@ -1,7 +1,7 @@
 import { reset } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { UniswapV2PoolContractManager } from './uniswap/UniswapV2PoolContractManager';
 import { UniswapV3PoolContractManager } from './uniswap/UniswapV3PoolContractManager';
-import { arbitrage, TransactionDirection } from './arbitrage';
+import { arbitrage, TransactionDirection, flashLoanArbitrage } from './arbitrage';
 import { ethers } from "hardhat";
 import { config } from "dotenv";
 import { AaveV3Ethereum } from "@bgd-labs/aave-address-book";
@@ -11,6 +11,8 @@ async function arbitrageOverBlocks() {
     let usdcAddress = AaveV3Ethereum.ASSETS.USDC.UNDERLYING;
     const lastBlock = await ethers.provider.getBlockNumber();
 
+    let flashLoan = true;
+
     // Get blocknumbers to run the test on
     let blockNumbers = [];
     let interval = 1337;
@@ -19,7 +21,15 @@ async function arbitrageOverBlocks() {
         blockNumbers.push(lastBlock - interval * i);
     }
 
-    let goodTestingBlocks = [19995279, 19992279, 19987279, 19992334, 19959350, 19987518] // found with trial and error
+    let goodTestingBlocks = [
+        19995279,
+        19992279,
+        19987279,
+        19992334,
+        19959350,
+        19987518,
+        20053702 // $17 difference
+    ]
 
     // Loop through the block numbers
     for (const blockNumber of blockNumbers) {
@@ -49,11 +59,13 @@ async function arbitrageOverBlocks() {
 
             if (priceDiff > 0) {
                 console.log(`Price in UniV2 is higher than in UniV3 by $${priceDiff}`);
-                await arbitrage(usdcAddress, TransactionDirection.WrappedEth_SellV2_BuyV3, amount);
+                flashLoan ? await flashLoanArbitrage(usdcAddress, TransactionDirection.WrappedEth_SellV2_BuyV3, amount) : await arbitrage(usdcAddress, TransactionDirection.WrappedEth_SellV2_BuyV3, amount);
             } else {
                 console.log(`Price in UniV3 is higher than in UniV2 by $${Math.abs(priceDiff)}`);
-                await arbitrage(usdcAddress, TransactionDirection.WrappedEth_SellV3_BuyV2, amount);
+                flashLoan ? await flashLoanArbitrage(usdcAddress, TransactionDirection.WrappedEth_SellV3_BuyV2, amount) : await arbitrage(usdcAddress, TransactionDirection.WrappedEth_SellV3_BuyV2, amount);
             }
+
+            await reset(`https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`, blockNumber);
         }
     }
 }
